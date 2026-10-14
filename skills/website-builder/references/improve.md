@@ -24,3 +24,5 @@ Use project tokens and components so the correction applies consistently. Read [
 Preserve unrelated local work. Use an existing repository's normal branch/checkpoint conventions, or a scoped recoverable backup where needed; do not commit unrelated files. Capture before/after views when they help assess a visual change.
 
 Run the checks in [verification](verification.md) appropriate to the affected flows, fix demonstrated regressions, and update `WEBSITE_BRIEF.md` yourself. Update affected project instructions when architecture or commands change, preserving unrelated rules. Report what changed, where to view it, and what remains unverified. Continue implementing authorized changes until complete; a list of suggestions does not satisfy an implementation request.
+
+If the work exposes a confirmed reusable workflow problem, follow [feedback tracking](feedback.md) to record it locally and merge duplicate evidence. A site preference or ordinary project bug does not automatically imply a missing skill rule. Recording feedback does not authorize changes to the source skill or public uploads.

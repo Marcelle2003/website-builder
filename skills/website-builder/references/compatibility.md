@@ -12,9 +12,9 @@ The local installer needs Python 3.10+ and installs files for the **selected** a
 
 Here `~` means the current user's home directory; on Windows this is normally under `C:/Users/<name>`. The installer resolves it through Python, so the user need not create literal `~` folders. Native Windows and WSL homes are separate. Installing for another agent later is an explicit second selection, not an automatic side effect of setup.
 
-## One skill, four modes
+## One skill, five modes
 
-`setup`, `setup-website`, `create`, and `improve` are choices interpreted by Website Builder's instructions. They are not four new slash commands. Supply the choice as ordinary text with the named skill:
+`setup`, `setup-website`, `create`, and `improve` are the four website modes. `review-skill` is a fifth mode for toolkit maintenance. These choices are interpreted by Website Builder's instructions; they are not five new slash commands. Supply the choice as ordinary text with the named skill:
 
 ```text
 Codex:       $website-builder setup
@@ -22,9 +22,9 @@ Cursor:      /website-builder setup
 Claude Code: /website-builder setup
 ```
 
-The same pattern works with the other mode names and a short request, such as `/website-builder improve the mobile navigation`. A plain-language alternative is “Use the Website Builder skill in setup-website mode for this project.” If the skill is not discovered, resolve installation first; merely mentioning its name does not make missing files available.
+The same pattern works with the other mode names and a short request, such as `/website-builder improve the mobile navigation` or `/website-builder review-skill for these projects`. A plain-language alternative is “Use the Website Builder skill in setup-website mode for this project.” If the skill is not discovered, resolve installation first; merely mentioning its name does not make missing files available. [Skill review](review-skill.md) defaults to a proposal; an existing request to apply and publish the selected improvements authorizes that workflow without repeated approval requests.
 
-Claude Code supports `$ARGUMENTS` and positional substitution in its own skill bodies. Cursor's current skill documentation does not promise equivalent substitution. This toolkit therefore reads the user's mode and brief as conversational input rather than embedding those macros. Four separate picker entries would require separate skills or host-specific command definitions. [Claude arguments](https://code.claude.com/docs/en/skills#pass-arguments-to-skills), [Cursor invocation](https://cursor.com/docs/skills#how-skills-work)
+Claude Code supports `$ARGUMENTS` and positional substitution in its own skill bodies. Cursor's current skill documentation does not promise equivalent substitution. This toolkit therefore reads the user's mode and brief as conversational input rather than embedding those macros. Five separate picker entries would require separate skills or host-specific command definitions. [Claude arguments](https://code.claude.com/docs/en/skills#pass-arguments-to-skills), [Cursor invocation](https://cursor.com/docs/skills#how-skills-work)
 
 ## Persistent instructions for each website
 
@@ -45,6 +45,12 @@ Claude Code **v2.1.277+** can read `AGENTS.md` directly under its default projec
 Instruction loading and skill installation are separate checks. A project instruction can tell the agent to use Website Builder, but cannot make an absent skill available or install its dependencies. Loading the file does not authorize setup, and a discussion stays a discussion. Perform installations only when the user's task authorizes them. Keep imports local to the project; importing a personal skill path would tie the project to one computer and may require external-import approval.
 
 The AI maintains `WEBSITE_BRIEF.md` as decisions, implementation, and verification change; the owner supplies direction and corrections rather than manually keeping this technical record. Follow [project-instruction maintenance and fresh-chat verification](project-instructions.md) to keep the brief and instructions consistent and confirm they load in the selected agent. Persistent instructions reduce repeated explanation, but they are model guidance, not a guarantee of compliance or an enforcement mechanism. [Claude instruction reliability](https://code.claude.com/docs/en/memory#write-effective-instructions)
+
+## Local feedback across agents
+
+Feedback uses ordinary project files, not a host-specific service. The AI creates and maintains `SKILL_FEEDBACK.md` after a meaningful verified observation, deduplicating notes and separating preferences from reusable defects. A shared local inbox is optional and requires the user's configuration or authorization: the project's untracked `.website-builder-local.json` may set `feedback_inbox` to an absolute directory path. Do not add global agent settings or inspect projects outside those the user designated. Recording needs no GitHub account and performs no automatic telemetry. Follow [feedback guidance](feedback.md).
+
+An installed skill copy, a website project, and the toolkit source repository are distinct locations. Updating an installed skill does not modify existing website projects. Toolkit review works against the intended source checkout, with only reviewed, sanitized, approved improvements and history entering a public repository; raw notes are never automatically uploaded. See [review-skill](review-skill.md).
 
 ## Discovery and capabilities
 

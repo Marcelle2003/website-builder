@@ -27,6 +27,7 @@ Relevant sources: [Wagtail getting started](https://docs.wagtail.org/en/stable/g
 - Provide `.env.example` with descriptive placeholders, ignore real secrets, and keep local databases/uploads out of source control unless deliberately using safe test fixtures. Set up an editor account through the supported local flow without committing its password.
 - Create project-root `AGENTS.md` and a sibling `CLAUDE.md` importing it, following [project instructions](project-instructions.md). Fill them with the actual architecture, skill routing, and verified commands. Preserve and merge any existing instructions rather than replacing them with a template.
 - Create and maintain `WEBSITE_BRIEF.md` from the conversation, plus a short run guide and a record of selected package versions. The AI writes these; the user supplies creative direction and corrections. State how images, content publishing, and future hosting fit together.
+- Prepare local feedback handling through [feedback tracking](feedback.md): preserve existing records, set appropriate ignore rules, and create `SKILL_FEEDBACK.md` only when meaningful evidence exists. A shared inbox is optional and needs a user-selected location.
 - If the user requested a frontend-only site, document the decision and skip Wagtail; do not present an absent CMS as ready.
 
 ## Completion evidence

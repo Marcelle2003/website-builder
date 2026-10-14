@@ -7,3 +7,6 @@ __pycache__/
 !.env.example
 .website-builder-backups/
 .website-builder-setup.json
+SKILL_FEEDBACK.md
+.website-builder-local.json
+.website-builder-private/

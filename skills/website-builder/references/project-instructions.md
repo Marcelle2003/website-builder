@@ -9,6 +9,7 @@ For every new website, write a concise project-root `AGENTS.md` adapted from [th
 - Actual frontend/backend directories, installed framework versions or the authoritative manifests, and the responsibility of each part.
 - How content reaches the frontend, what editors can change, and the real publish/refresh path.
 - A direction to read `WEBSITE_BRIEF.md` before website work and to load the installed `website-builder` skill for relevant implementation tasks, with framework skills loaded only as needed.
+- A direction to maintain local skill feedback when meaningful evidence arises, using [feedback tracking](feedback.md). Keep the brief's site decisions separate from reusable workflow observations; do not put private inbox paths in shared instructions.
 - Verified run, build, and relevant check commands with their working directories. Reference a run guide for lengthy or OS-specific details; do not invent commands or label an unrun command verified.
 - Project-specific design/business constraints and how to verify the affected flows. Keep evolving creative decisions in the brief instead of copying them into multiple instruction files.
 
@@ -35,6 +36,12 @@ Update it as material decisions settle during authorized work and before a hando
 Separate confirmed decisions, agent assumptions, and open questions. An AI suggestion is not a user-approved decision; a discussed feature is not implemented functionality. Do not rewrite the brief after every message, store a transcript, or require approval for routine note-taking already in scope. Ask only when a conflicting or missing decision materially affects the work. Respect explicit instructions to discuss without changing files.
 
 Keep technical commands/architecture in `AGENTS.md` and the run guide; keep the brief focused on this site's intent and current state. Exclude secrets and unnecessary personal information. On later tasks, read both before asking the owner to repeat context.
+
+## Preserve local feedback across sessions
+
+During authorized website work, the AI maintains `SKILL_FEEDBACK.md` for confirmed workflow issues, following [feedback tracking](feedback.md). Create it only when useful evidence exists, keep it out of routine commits, and retain records across skill updates. The owner can ask “Review the Website Builder feedback” to use the [review-skill maintenance mode](review-skill.md). A review alone produces proposals; changes to the reusable skill follow the user's authorized scope.
+
+When preparing or adopting a website, include this routing in its project instructions and arrange the local ignore rules as described in feedback tracking. Preserve existing project rules and tracked files. Do not create a central inbox or change global agent instructions unless the user requests that configuration.
 
 ## Verify a fresh chat
 

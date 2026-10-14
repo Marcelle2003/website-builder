@@ -14,14 +14,15 @@ You do not need to install Node, npx, Python, or Git before asking. The agent ch
 
 If the agent cannot read the URL, use GitHub's **Code → Download ZIP**, extract the folder, open it in your coding agent, and ask it to read `START_HERE.md`.
 
-## Four things you can ask for
+## Four website modes and a review mode
 
 - **Setup:** “Set up Website Builder on this computer.” Installs the skill, its supporting framework skills, and the necessary development tools.
 - **Setup website:** “Prepare a new website called Willow Studio.” Creates and connects an Astro frontend, Tailwind styling, and a Wagtail content editor.
 - **Create:** “Create a warm, playful website for my ceramics studio. Here are my photos and some references I like.” Develops the content, design, pages, and interactions with you.
 - **Improve:** “The mobile menu opens abruptly. Make it smooth, and keep the existing design.” Inspects and improves the relevant parts of your site.
+- **Review skill:** “Review the Website Builder feedback from these projects.” Uses the local notes you designate to propose improvements to the toolkit. It proposes changes by default; it applies and publishes them when you authorize that work.
 
-These are four modes of one skill, not four automatically registered slash commands. Ordinary language works. See [agent-specific installation and invocation](skills/website-builder/references/compatibility.md).
+These are five modes of one skill, not five automatically registered slash commands. Ordinary language works. See [agent-specific installation and invocation](skills/website-builder/references/compatibility.md).
 
 Each website belongs in its **own project folder**, separate from this toolkit.
 
@@ -32,6 +33,14 @@ You normally do not need to repeat the skill command in every message. When prep
 The agent also **creates and keeps `WEBSITE_BRIEF.md` updated** from your conversations. You explain what you want, review the preview, and change your mind as needed; you do not have to complete or maintain a technical document. It records accepted decisions, separates assumptions and ideas from confirmed choices, and tracks what is complete or still pending. You can correct it in conversation or edit it yourself.
 
 Project instructions help the next chat resume work. Skills must still be available in that agent's environment, and loading behaviour depends on the agent and its settings. See [project continuity](skills/website-builder/references/project-instructions.md) for the workflow and [compatibility](skills/website-builder/references/compatibility.md) for agent details.
+
+## Learn from real project work
+
+When the agent first verifies a meaningful observation about the toolkit, it creates `SKILL_FEEDBACK.md` in that website project. The AI maintains the notes and combines duplicates. It keeps your design preferences separate from reusable workflow defects, so one client's taste does not become a rule for every website. You do not have to maintain this log yourself.
+
+Feedback recording is local: it needs no GitHub sign-in and sends no automatic telemetry. If you want a shared local inbox, authorize its directory and let the agent configure the project's untracked `.website-builder-local.json` with `feedback_inbox` set to that directory's absolute path. This is optional; no global agent settings are added, and the agent does not search unrelated projects for notes. See [feedback recording](skills/website-builder/references/feedback.md).
+
+Use `review-skill` when you want to turn those observations into a reviewable proposal. Only reviewed, sanitized, approved improvements and their [history](feedback/IMPROVEMENT_HISTORY.md) belong in the public toolkit repository; raw project notes are never automatically uploaded. If you already asked the agent to “apply and publish these,” it carries out the authorized edits, checks, version update, commit, and push without asking for the same approval again. See [skill review](skills/website-builder/references/review-skill.md).
 
 ## What the workflow covers
 
@@ -60,9 +69,11 @@ Setup does not publish a website or create paid hosting accounts. Deployment can
 
 ## Versions and maintenance
 
-The current release is **v0.2.0**. For a fixed version, give your agent the release/tag URL instead of the default branch. To update, ask it to inspect the new release and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+The current release is **v0.3.0**. For a fixed version, give your agent the release/tag URL instead of the default branch. To update, ask it to inspect the new release and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
 
-Updating the skill does not automatically edit existing website projects. Ask the agent to adopt the updated project-instruction workflow in the website you want to continue; it will preserve existing rules and decisions.
+The installed skill is a working copy for your agent, separate from the toolkit's source repository. Reviewing or publishing a toolkit improvement requires the intended source checkout; editing an installed copy does not update GitHub.
+
+Updating the skill does not automatically edit existing website projects. Ask the agent to adopt the updated project-instruction and feedback workflow in the website you want to continue; it will preserve existing rules and decisions.
 
 [Supporting skill sources and review notes](skills/website-builder/references/supporting-skills.md) explain the selected dependencies. Official framework documentation and the actual project's installed versions take precedence over outdated skill advice.
 

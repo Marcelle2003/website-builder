@@ -8,6 +8,7 @@
 - For creating or improving this website, discover and read the installed `website-builder` skill, then follow its relevant mode and framework guidance. Ordinary requests can use this workflow without the user repeating a skill command. Read only relevant supporting resources and check technical advice against installed versions.
 - If a required skill is unavailable, say so and follow the available project guidance for independent work; install it only as part of authorized setup. Do not assume a skill exists because this file names it.
 - The AI maintains `WEBSITE_BRIEF.md` as meaningful decisions settle and before handoff. Preserve user edits and distinguish confirmed decisions, assumptions, and unfinished work. The owner supplies direction through conversation; they need not fill in the document.
+- When a meaningful Website Builder workflow problem is confirmed, follow its feedback guidance to maintain a local `SKILL_FEEDBACK.md`, merge duplicate evidence, and keep it out of routine commits. Site preferences stay in the brief. Use `review-skill` for requested maintenance proposals; recording feedback does not authorize modifying or publishing the skill.
 
 ## Architecture
 

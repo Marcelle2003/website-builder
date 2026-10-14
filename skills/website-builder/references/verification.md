@@ -18,4 +18,6 @@ Check that the diff matches the request and unrelated user work remains intact. 
 
 Keep a short evidence record: commands and outcomes, pages/viewport sizes, interactions exercised, screenshots when useful, and untested items. Never label a build-only check as visual QA, claim WCAG compliance from a quick review, or report macOS testing based on Linux alone.
 
+Record meaningful confirmed skill problems through [local feedback](feedback.md), preserving the difference between an observed failure and an inferred cause. Exclude raw feedback, private inbox data, and `.website-builder-local.json` from routine commits. A successful website check does not validate a proposed skill change or authorize publishing it.
+
 End with the usable result: preview location, key changes, how to edit relevant content, passed checks, and concrete remaining limitations. Only describe framework capabilities that are actually used in the implementation.

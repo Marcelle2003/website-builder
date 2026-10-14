@@ -1,0 +1,18 @@
+# Website Builder feedback
+
+Local observations maintained by the AI during authorized website work. Keep this file out of routine commits. Record minimal evidence without client identifiers, secrets, private URLs, or copied conversations. Website preferences belong in `WEBSITE_BRIEF.md`.
+
+<!-- Authoring format: create a real entry only when meaningful evidence exists. Generate a stable unique ID, replace the fields below, and remove this comment. Merge subsequent evidence into the same entry; do not keep a fictional example. -->
+
+## {{stable feedback ID}} — {{short observed problem}}
+
+- First observed / last observed: {{dates}}
+- Skill version / workflow / reference: {{actual version or unknown; affected files}}
+- Status: {{Pending review for verified candidates; Needs evidence otherwise}}
+- Expected / observed: {{behaviour and consequence}}
+- Evidence and provenance: {{small reproduction or project-relative evidence; observed or user-reported}}
+- Occurrences / related IDs: {{distinct events; do not count copied entries twice}}
+- Suspected cause: {{what is known versus inferred}}
+- Proposed reusable improvement: {{narrow change, or why this is project-only}}
+- Confidence / tradeoffs: {{evidence strength, risks, and scope limits}}
+- Outcome: {{review decision, implemented version and checks, or verified release; leave unset until known}}

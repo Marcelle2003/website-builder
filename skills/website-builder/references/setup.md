@@ -4,6 +4,8 @@ Use this reference when the user wants to prepare their computer and agent for w
 
 Setup prepares tools and installs this toolkit. Creating project folders, installing Astro or Wagtail project packages, generating a website, starting databases, and designing pages belong to `setup-website` or `create`. If the user requested several modes together, finish setup and continue to the next requested mode.
 
+The four website modes are `setup`, `setup-website`, `create`, and `improve`; `review-skill` is a separate maintenance mode for the toolkit. These are five choices within one skill, not automatically registered slash commands.
+
 ## Inspect before installing
 
 1. Identify the current agent, operating system, CPU architecture, shell, actual user home, and writable locations. Work in the environment that will run the website. A Windows host and its WSL environment have separate tools and home folders; do not mix them.
@@ -72,6 +74,8 @@ Inspect the dry-run plan, then execute the same selection without `--dry-run`. T
 
 Identical existing skill contents are left alone. A differing destination requires review: do not delete it to force installation. For an authorized toolkit update, use `--update`; the installer saves a backup outside the discovery root before replacement. Preserve custom modifications and report the actual backup path. Use the pinned manifest as shipped; changing a revision or fetching an unrelated specialist skill is separate work, not a network-error workaround.
 
+The installed skill is separate from the toolkit source checkout. Updating it does not edit existing website projects or publish source changes. Adopt updated project instructions and feedback conventions only in the website projects the user asks to continue; preserve their existing decisions and rules.
+
 Missing `npx` does not block any of these installer steps. If website tooling later needs package execution, use the installed package manager's supported execution command or project scripts. Do not install a second Node distribution just to obtain `npx` when a usable supported environment already exists.
 
 ## Prepare the Wagtail supporting skill's CLI
@@ -97,6 +101,14 @@ The CLI is currently alpha. Its API operations target Wagtail's v3 admin API, no
 
 Preserve the supporting manifest's license provenance: the stub declares MIT, while its repository/runtime license is BSD-3-Clause. Retain both notices rather than relabeling the entire upstream source with one license.
 
+## Local feedback and toolkit maintenance
+
+Feedback recording needs no additional runtime, GitHub authentication, or global agent configuration. During later website work, the AI creates project-local `SKILL_FEEDBACK.md` after its first meaningful verified observation and maintains it according to [feedback.md](feedback.md), combining duplicates and separating client preferences from reusable defects. Setup alone does not require an empty feedback log, and notes are not sent as telemetry.
+
+Leave a shared local inbox unconfigured unless the user supplies or authorizes its directory. When requested, record `feedback_inbox` as an absolute directory path in the relevant project's untracked `.website-builder-local.json`, keeping that machine-specific file out of version control. This is a local directory, not an upload endpoint. Do not scan other repositories to discover feedback or add settings to a global agent configuration. A missing inbox does not block local project notes.
+
+For toolkit improvements, [review-skill](review-skill.md) uses only user-designated projects or the authorized inbox and defaults to a reviewable proposal. If the user has already authorized applying and publishing those improvements, proceed with the corresponding edits, verification, version update, commit, and push without asking for the same approval again. Work in the intended source checkout. Only reviewed, sanitized, approved improvements and their history enter the public repository; raw notes are never automatically uploaded.
+
 ## Verify and resume
 
 Verify the actual result rather than assuming a successful installer window finished setup:
@@ -104,7 +116,7 @@ Verify the actual result rather than assuming a successful installer window fini
 - Run the selected Node and package manager, Git, and Python version checks from the environment the agent will use. Confirm Python can import `ssl`, `sqlite3`, and `venv`. Where uv is selected, check `uv --version`. If virtual-environment creation needs testing, use an isolated temporary directory and the resulting Python executable; do not create a website as a test.
 - Check installer exit status and read its summary. Verify the core `SKILL.md`, referenced resources, and requested supporting skill folders exist at the reported destination. Distinguish complete installation from a partial download or a skipped conflict.
 - If the official Wagtail supporting skill was included, verify its selected CLI version and the successful `wt --help`, `wt skills get core`, and `wt skills list` checks. File installation alone does not make this stub ready to use.
-- Confirm `website-builder` appears in the selected agent's skill picker or available-skill inventory. If discovery is stale, use that agent's supported reload/restart path from [compatibility.md](compatibility.md). Then invoke a harmless request such as “Use Website Builder to explain the four modes without changing files.” If you cannot inspect the host's inventory, state discovery as unverified instead of claiming it worked.
+- Confirm `website-builder` appears in the selected agent's skill picker or available-skill inventory. If discovery is stale, use that agent's supported reload/restart path from [compatibility.md](compatibility.md). Then invoke a harmless request such as “Use Website Builder to explain its four website modes and review-skill mode without changing files.” If you cannot inspect the host's inventory, state discovery as unverified instead of claiming it worked.
 
 Keep a compact checkpoint in the conversation or the project's existing status record: chosen agent/scope, executable paths and versions, installed skills, verification completed, and the exact pending step. Do not record credentials. When setup resumes, inspect reality and repeat only incomplete or failed steps. A failed support download need not undo a working core installation; retry the original pinned selection after resolving the reported cause. Do not disable TLS verification to get past a certificate error.
 

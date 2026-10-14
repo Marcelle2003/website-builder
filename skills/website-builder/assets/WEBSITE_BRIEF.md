@@ -24,6 +24,8 @@ Stack and selected versions, where run instructions live, local preview/CMS URLs
 
 Keep detailed architecture and verified commands in `AGENTS.md` and the run guide; reference them here instead of maintaining competing copies.
 
+Potential improvements to the reusable Website Builder workflow belong in local `SKILL_FEEDBACK.md`, following the skill's feedback guidance. Keep this brief focused on the website; do not put private inbox paths here.
+
 ## Latest work and verification
 
 Completed changes, actual checks/evidence, known limitations, and the next requested step.

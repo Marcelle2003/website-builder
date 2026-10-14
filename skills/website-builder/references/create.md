@@ -23,3 +23,5 @@ Choose useful Astro and Tailwind capabilities: reusable layouts, optimized respo
 Open the working preview and describe two or three concrete design decisions they can evaluate. Incorporate requested changes consistently across representative page types and states. Maintain the brief with accepted direction and deferred work; keep suggestions separate from decisions. Update project instructions if architecture or commands changed.
 
 Use [verification](verification.md) before delivery. Explain how to open the preview and edit content, and distinguish a locally working site from a deployed one. When asked how the stack helped, connect each implemented feature to its visible or operational benefit; do not advertise unused features.
+
+Record meaningful verified workflow problems locally through [feedback tracking](feedback.md) as they arise. Merge repeated evidence and keep the owner's creative choices in the brief. Mention only actionable pending improvements at a useful milestone; complete the website request without turning feedback into an unsolicited skill rewrite.
