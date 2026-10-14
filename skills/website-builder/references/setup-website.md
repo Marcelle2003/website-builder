@@ -25,7 +25,8 @@ Relevant sources: [Wagtail getting started](https://docs.wagtail.org/en/stable/g
 
 - Supply simple, OS-appropriate start/stop instructions and working preview/CMS URLs. Prefer an existing supported task runner; do not make a Mac-only shell script the only way to run the project.
 - Provide `.env.example` with descriptive placeholders, ignore real secrets, and keep local databases/uploads out of source control unless deliberately using safe test fixtures. Set up an editor account through the supported local flow without committing its password.
-- Create `WEBSITE_BRIEF.md`, a short run guide, and a record of selected package versions. State how images, content publishing, and future hosting fit together.
+- Create project-root `AGENTS.md` and a sibling `CLAUDE.md` importing it, following [project instructions](project-instructions.md). Fill them with the actual architecture, skill routing, and verified commands. Preserve and merge any existing instructions rather than replacing them with a template.
+- Create and maintain `WEBSITE_BRIEF.md` from the conversation, plus a short run guide and a record of selected package versions. The AI writes these; the user supplies creative direction and corrections. State how images, content publishing, and future hosting fit together.
 - If the user requested a frontend-only site, document the decision and skip Wagtail; do not present an absent CMS as ready.
 
 ## Completion evidence
@@ -33,3 +34,5 @@ Relevant sources: [Wagtail getting started](https://docs.wagtail.org/en/stable/g
 Run the frontend build, Django checks, and migrations. Start both services. Confirm the homepage displays content fetched from Wagtail. Change a distinctive value in a disposable local page, publish it, perform the documented refresh/rebuild if required, and verify the exact value appears on the frontend. Restore demonstration content if appropriate. Verify a local image URL and a missing-page response too.
 
 If browser access is unavailable, verify API responses and build output and state that editor/browser interactions remain untested. Do not claim a full end-to-end pass. Missing credentials or prerequisites should leave a resumable record and a concrete next step.
+
+Check the persistent instructions against actual files and commands, then perform the [fresh-chat verification](project-instructions.md#verify-a-fresh-chat) when the host supports it. Record instruction loading separately from website runtime checks; a file existing is not proof that the agent loaded it.

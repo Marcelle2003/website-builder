@@ -26,6 +26,26 @@ The same pattern works with the other mode names and a short request, such as `/
 
 Claude Code supports `$ARGUMENTS` and positional substitution in its own skill bodies. Cursor's current skill documentation does not promise equivalent substitution. This toolkit therefore reads the user's mode and brief as conversational input rather than embedding those macros. Four separate picker entries would require separate skills or host-specific command definitions. [Claude arguments](https://code.claude.com/docs/en/skills#pass-arguments-to-skills), [Cursor invocation](https://cursor.com/docs/skills#how-skills-work)
 
+## Persistent instructions for each website
+
+During new-project preparation, generate a concise root `AGENTS.md` as the authoritative shared entry point for that website's project guidance. It should direct the agent to the installed Website Builder skill when relevant, identify the project brief and working commands, and preserve the owner's decisions. It remains subject to the user's current request and the host's instruction precedence. Keep detailed workflows in the skill instead of copying them into every project.
+
+Codex discovers project instructions when a session starts; Cursor supports root and nested `AGENTS.md` files. Open the intended website project and check the effective instructions, including any overrides. [Codex project instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [Cursor project rules](https://cursor.com/docs/rules#agentsmd)
+
+For a new project, also create a small sibling `CLAUDE.md` containing this literal import line:
+
+```text
+@AGENTS.md
+```
+
+In the actual file, the line must be outside quotes, backticks, and code fences. Add Claude-specific guidance below it only when needed. This keeps one shared source and avoids symlink portability problems. Existing projects require inspection and a compatible merge: preserve existing `AGENTS.md`, `CLAUDE.md`, and Cursor rules, resolve conflicts with the user's decisions, and avoid duplicate imports. Do not replace an established rules system or change global agent configuration merely to add Website Builder. [Claude's shared-file guidance](https://code.claude.com/docs/en/memory#share-one-file-with-other-coding-tools)
+
+Claude Code **v2.1.277+** can read `AGENTS.md` directly under its default project-instruction setting. However, a `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` in the working directory or an ancestor suppresses that fallback; personal `~/.claude/CLAUDE.md` does not. Older versions, disabled support, or different settings can also prevent direct loading. The wrapper works when project `CLAUDE.md` loading is enabled; it cannot override exclusions or a managed-only setting. Verify the actual client rather than changing its settings automatically. [Claude AGENTS.md discovery](https://code.claude.com/docs/en/memory#agents-md)
+
+Instruction loading and skill installation are separate checks. A project instruction can tell the agent to use Website Builder, but cannot make an absent skill available or install its dependencies. Loading the file does not authorize setup, and a discussion stays a discussion. Perform installations only when the user's task authorizes them. Keep imports local to the project; importing a personal skill path would tie the project to one computer and may require external-import approval.
+
+The AI maintains `WEBSITE_BRIEF.md` as decisions, implementation, and verification change; the owner supplies direction and corrections rather than manually keeping this technical record. Follow [project-instruction maintenance and fresh-chat verification](project-instructions.md) to keep the brief and instructions consistent and confirm they load in the selected agent. Persistent instructions reduce repeated explanation, but they are model guidance, not a guarantee of compliance or an enforcement mechanism. [Claude instruction reliability](https://code.claude.com/docs/en/memory#write-effective-instructions)
+
 ## Discovery and capabilities
 
 After installing, check the host's actual skill inventory. Codex detects skill changes automatically; restart it if the update does not appear. Cursor discovers skills at startup and exposes them in Customize → Skills; start a fresh session or restart if necessary. Claude Code watches existing skill roots; `/reload-skills` discovers a newly created top-level root. Avoid repeatedly installing duplicates to fix a stale picker. [Codex discovery](https://learn.chatgpt.com/docs/build-skills), [Cursor discovery](https://cursor.com/docs/skills#viewing-skills), [Claude reload behavior](https://code.claude.com/docs/en/skills#edit-a-skill-during-a-session)

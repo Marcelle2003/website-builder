@@ -23,7 +23,15 @@ If the agent cannot read the URL, use GitHub's **Code → Download ZIP**, extrac
 
 These are four modes of one skill, not four automatically registered slash commands. Ordinary language works. See [agent-specific installation and invocation](skills/website-builder/references/compatibility.md).
 
-Each website belongs in its **own project folder**, separate from this toolkit. Your agent keeps a short project brief so another agent can pick up the work later.
+Each website belongs in its **own project folder**, separate from this toolkit.
+
+## Continue in ordinary conversation
+
+You normally do not need to repeat the skill command in every message. When preparing a new website, the agent writes project-specific `AGENTS.md` instructions and a small `CLAUDE.md` compatibility file so later chats can find the workflow, architecture, and verification commands. Existing project instructions are preserved and merged. Setup checks fresh-chat loading when the agent has the necessary tools and reports when it could not verify it.
+
+The agent also **creates and keeps `WEBSITE_BRIEF.md` updated** from your conversations. You explain what you want, review the preview, and change your mind as needed; you do not have to complete or maintain a technical document. It records accepted decisions, separates assumptions and ideas from confirmed choices, and tracks what is complete or still pending. You can correct it in conversation or edit it yourself.
+
+Project instructions help the next chat resume work. Skills must still be available in that agent's environment, and loading behaviour depends on the agent and its settings. See [project continuity](skills/website-builder/references/project-instructions.md) for the workflow and [compatibility](skills/website-builder/references/compatibility.md) for agent details.
 
 ## What the workflow covers
 
@@ -52,7 +60,9 @@ Setup does not publish a website or create paid hosting accounts. Deployment can
 
 ## Versions and maintenance
 
-The first release is **v0.1.0**. For a fixed version, give your agent the release/tag URL instead of the default branch. To update, ask it to inspect the new release and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+The current release is **v0.2.0**. For a fixed version, give your agent the release/tag URL instead of the default branch. To update, ask it to inspect the new release and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+
+Updating the skill does not automatically edit existing website projects. Ask the agent to adopt the updated project-instruction workflow in the website you want to continue; it will preserve existing rules and decisions.
 
 [Supporting skill sources and review notes](skills/website-builder/references/supporting-skills.md) explain the selected dependencies. Official framework documentation and the actual project's installed versions take precedence over outdated skill advice.
 

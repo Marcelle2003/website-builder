@@ -4,6 +4,8 @@
 
 Read project guidance, the website brief, dependency manifests, and relevant components. Inspect the supplied page in the browser when available, including a narrow viewport and the interaction mentioned. A screenshot alone cannot verify opening/closing, keyboard behaviour, or responsive layout.
 
+Preserve existing instruction files and their scope. When adopting Website Builder into the project, merge missing relevant guidance using [project instructions](project-instructions.md); do not overwrite existing rules with the template. If the brief is missing during authorized implementation, create it from available facts and conversation rather than making the owner fill it out.
+
 Determine whether the problem comes from content clarity, missing imagery, hierarchy, visual consistency, or interaction. If the user asks whether to redesign, explain the smallest coherent intervention that addresses the evidence. If they request a specific change, complete that scope rather than imposing a redesign.
 
 Preserve the brand elements and behaviour the user likes. Do not migrate the framework, install a CMS, change user roles, or alter publishing permissions for a visual request. Load only the relevant specialist guidance; apply it against actual installed versions.
@@ -21,4 +23,4 @@ Use project tokens and components so the correction applies consistently. Read [
 
 Preserve unrelated local work. Use an existing repository's normal branch/checkpoint conventions, or a scoped recoverable backup where needed; do not commit unrelated files. Capture before/after views when they help assess a visual change.
 
-Run the checks in [verification](verification.md) appropriate to the affected flows, fix demonstrated regressions, and update `WEBSITE_BRIEF.md`. Report what changed, where to view it, and what remains unverified. Continue implementing authorized changes until complete; a list of suggestions does not satisfy an implementation request.
+Run the checks in [verification](verification.md) appropriate to the affected flows, fix demonstrated regressions, and update `WEBSITE_BRIEF.md` yourself. Update affected project instructions when architecture or commands change, preserving unrelated rules. Report what changed, where to view it, and what remains unverified. Continue implementing authorized changes until complete; a list of suggestions does not satisfy an implementation request.

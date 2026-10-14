@@ -1,0 +1,27 @@
+# Project instructions
+
+<!-- Authoring template: fill from this project's files and verified decisions, then remove this comment and all placeholders. Preserve existing instructions instead of copying this over them. -->
+
+## Website workflow
+
+- Before website work, read `WEBSITE_BRIEF.md` and applicable project instructions. Continue from recorded decisions and the user's current request.
+- For creating or improving this website, discover and read the installed `website-builder` skill, then follow its relevant mode and framework guidance. Ordinary requests can use this workflow without the user repeating a skill command. Read only relevant supporting resources and check technical advice against installed versions.
+- If a required skill is unavailable, say so and follow the available project guidance for independent work; install it only as part of authorized setup. Do not assume a skill exists because this file names it.
+- The AI maintains `WEBSITE_BRIEF.md` as meaningful decisions settle and before handoff. Preserve user edits and distinguish confirmed decisions, assumptions, and unfinished work. The owner supplies direction through conversation; they need not fill in the document.
+
+## Architecture
+
+- Frontend: {{actual directory, framework, styling system, and version source}}.
+- Backend/content: {{actual directory, framework, and editing responsibilities; omit absent services}}.
+- Publishing: {{actual content API/rendering and publish-to-website refresh path}}.
+
+## Commands
+
+{{List only this project's actual run/build/check commands with working directories, and link the run guide for platform-specific details. Distinguish verified commands from any pending checks.}}
+
+## Preserve and verify
+
+- {{Project-specific business constraints, design conventions, and existing behaviour to preserve. Refer to the brief for evolving creative choices.}}
+- Keep changes within the requested scope. Visual/text work does not authorize account, permission, payment, or publishing changes.
+- Run the relevant project checks and exercise affected browser interactions at suitable desktop/mobile widths when tools permit. Report exactly what was checked and any unavailable verification.
+- Update these instructions when architecture or verified commands change; keep detailed workflow instructions in the skill and creative decisions in the brief.

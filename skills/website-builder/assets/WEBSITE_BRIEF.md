@@ -1,6 +1,6 @@
 # Website brief
 
-Keep this short and current. Replace prompts with known decisions; mark useful assumptions and unresolved questions. Do not store secrets or duplicate the whole conversation.
+The AI creates and maintains these notes from conversation and project evidence; the owner does not need to fill out this document. Keep it short and current, preserve owner edits, and replace these prompts with actual information. Separate confirmed decisions, agent assumptions, and open questions. Do not store secrets or duplicate the conversation.
 
 ## Purpose and visitors
 
@@ -21,6 +21,8 @@ Supplied versus demonstration content, imagery sources/credits, Wagtail-editable
 ## Project and preview
 
 Stack and selected versions, where run instructions live, local preview/CMS URLs, and relevant environment-variable names without values.
+
+Keep detailed architecture and verified commands in `AGENTS.md` and the run guide; reference them here instead of maintaining competing copies.
 
 ## Latest work and verification
 

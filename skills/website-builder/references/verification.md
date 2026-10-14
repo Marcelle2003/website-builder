@@ -10,6 +10,8 @@ Exercise affected interactions: open and close menus/FAQs, rapid toggle, gallery
 
 For a palette change, inspect computed styles and interactive states as well as searching source literals. For image replacements, inspect the rendered image, not only a successful HTTP response. For CMS integration, publish a distinctive local test value and verify that value reaches the page using the documented update path.
 
+For new or materially changed project instructions, follow [fresh-chat verification](project-instructions.md#verify-a-fresh-chat). Check instruction loading independently from installation and build results. Keep the AI-maintained brief current with confirmed decisions and actual implementation status before handing work back.
+
 ## Scope and truthful reporting
 
 Check that the diff matches the request and unrelated user work remains intact. Run checks once successfully, expanding or repeating them when a subsequent change or unresolved issue warrants it. If a prerequisite is missing, perform useful remaining checks and record the specific blocked verification.

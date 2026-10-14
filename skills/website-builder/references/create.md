@@ -10,7 +10,7 @@ If the user is still exploring direction, describe one recommended direction and
 
 ## Develop a coherent first version
 
-Prepare missing infrastructure via [project setup](setup-website.md). Record the brief with the [template](../assets/WEBSITE_BRIEF.md). Load the relevant specialist skills and [design and motion guidance](design-and-motion.md).
+Prepare missing infrastructure via [project setup](setup-website.md), including the [persistent project instructions](project-instructions.md). Create the brief yourself from the conversation using the [template](../assets/WEBSITE_BRIEF.md); do not ask the owner to complete it as a form. Load the relevant specialist skills and [design and motion guidance](design-and-motion.md).
 
 Build a representative page with the real navigation, typography, colour roles, content hierarchy, images, and mobile behaviour. Establish reusable components and tokens from that page, then carry the direction through the requested pages. Use real content lengths early so a design does not depend on unrealistically short copy.
 
@@ -20,6 +20,6 @@ Choose useful Astro and Tailwind capabilities: reusable layouts, optimized respo
 
 ## Refine with the user
 
-Open the working preview and describe two or three concrete design decisions they can evaluate. Incorporate requested changes consistently across representative page types and states. Update the brief with accepted direction and deferred work.
+Open the working preview and describe two or three concrete design decisions they can evaluate. Incorporate requested changes consistently across representative page types and states. Maintain the brief with accepted direction and deferred work; keep suggestions separate from decisions. Update project instructions if architecture or commands changed.
 
 Use [verification](verification.md) before delivery. Explain how to open the preview and edit content, and distinguish a locally working site from a deployed one. When asked how the stack helped, connect each implemented feature to its visible or operational benefit; do not advertise unused features.
