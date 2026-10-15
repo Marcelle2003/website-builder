@@ -6,11 +6,11 @@ Use this when creating a website, adopting Website Builder into an existing proj
 
 For every new website, write a concise project-root `AGENTS.md` adapted from [the template](../assets/AGENTS.md.template). Generate it from inspected files and verified decisions; do not leave authoring placeholders or assume the default stack was actually installed. Include:
 
-- Actual frontend/backend directories, installed framework versions or the authoritative manifests, and the responsibility of each part.
-- How content reaches the frontend, what editors can change, and the real publish/refresh path.
-- A direction to read `WEBSITE_BRIEF.md` before website work and to load the installed `website-builder` skill for relevant implementation tasks, with framework skills loaded only as needed.
+- Actual WordPress installation and custom theme/plugin paths, local environment, installed versions or authoritative manifests, and the responsibility of each part. For an existing non-WordPress site, record its actual architecture instead of claiming a conversion.
+- Theme/editing model, what editors can change, where business content types live, and the real publishing/cache behaviour. Distinguish custom PHP layouts, editable blocks/fields, compiled theme assets, and any retained builder.
+- A direction to read `WEBSITE_BRIEF.md` before website work and load the installed `website-builder` skill for relevant implementation tasks. Route to installed WordPress, Tailwind, and animation skills only when applicable; use the current manifest and supporting-skill guide rather than copying a catalogue into every project.
 - A direction to maintain local skill feedback when meaningful evidence arises, using [feedback tracking](feedback.md). Keep the brief's site decisions separate from reusable workflow observations; do not put private inbox paths in shared instructions.
-- Verified run, build, and relevant check commands with their working directories. Reference a run guide for lengthy or OS-specific details; do not invent commands or label an unrun command verified.
+- Verified environment start/stop, asset build, PHP/check, and relevant WordPress CLI commands with working directories or site paths. Reference a run guide for lengthy or OS-specific steps; do not invent commands or label an unrun command verified.
 - Project-specific design/business constraints and how to verify the affected flows. Keep evolving creative decisions in the brief instead of copying them into multiple instruction files.
 
 Keep skill references portable: use the skill names and the host's discovered installation paths at runtime, not the author's home directory. Project instructions do not install missing skills. If a skill is absent, report that and use available project guidance for independent work; follow authorized setup when it is needed. Do not run installation merely because a fresh chat reads `AGENTS.md`.
@@ -31,7 +31,7 @@ When adopting an existing site, add only missing relevant guidance during author
 
 Create `WEBSITE_BRIEF.md` from information already supplied and observed. The owner need not understand Markdown or maintain it manually. Explain that it is the site's shared notes and that they can correct it through normal conversation or edit it themselves.
 
-Update it as material decisions settle during authorized work and before a handoff: purpose, audience, scope, accepted visual direction, content sources, implemented behaviour, deferred requests, and actual verification. Read existing notes and preserve the owner's edits. Use the latest clear user decision when direction changes, recording a short superseded note only if it helps explain current work.
+Update it as material decisions settle during authorized work and before a handoff: purpose, audience, scope, accepted visual and motion direction, content sources, editing responsibilities, implemented behaviour, deferred requests, and actual verification. Read existing notes and preserve the owner's edits. Use the latest clear user decision when direction changes, recording a short superseded note only if it helps explain current work.
 
 Separate confirmed decisions, agent assumptions, and open questions. An AI suggestion is not a user-approved decision; a discussed feature is not implemented functionality. Do not rewrite the brief after every message, store a transcript, or require approval for routine note-taking already in scope. Ask only when a conflicting or missing decision materially affects the work. Respect explicit instructions to discuss without changing files.
 

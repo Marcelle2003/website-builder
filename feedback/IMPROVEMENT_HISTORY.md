@@ -2,6 +2,14 @@
 
 This is the public record of approved, reusable toolkit changes. Keep raw project observations, client details, and local inbox configuration outside this repository. See [feedback recording](../skills/website-builder/references/feedback.md) and [skill review](../skills/website-builder/references/review-skill.md) for the workflow.
 
+## v0.4.0 branch — Custom WordPress theme workflow
+
+**Problem:** Teams maintaining conventional WordPress sites need AI-assisted creative development without a new CMS or a headless deployment. Bespoke motion and layouts also need a clear editing model and relevant specialist guidance.
+
+**Approved change:** Default new projects to custom hybrid WordPress themes with Tailwind on LAMP-compatible hosting, retaining existing architectures when improving a site. Add intentional, browser-verified motion design and optional GSAP guidance. Replace the default Astro/Wagtail supporting pack with selected official WordPress skills, Tailwind, and frontend-design; provide explicit optional selections with dependency resolution and source-archive reuse. Pin reviewed sources, preserve their licenses, and document observed upstream caveats. Retain all five modes, AI-maintained project instructions/brief, and local feedback. Publish this work on `wordpress-theme-builder`; it is not a tagged release or a change to `main`.
+
+**Verification:** All 20 offline installer tests, skill validation, resource-link checks, and diff checks passed locally. A temporary live install and unchanged repeat covered all 15 supporting skills plus Website Builder; installation paths for all three agents and a recoverable v0.3.0 upgrade were checked on Linux. Independent workflow and implementation reviews covered environment reuse, narrow improvements, hybrid detection, and installer behaviour. No full WordPress site, animation, or physical Mac setup was executed. See [validation scope](../VALIDATION.md) for precise evidence and limitations.
+
 ## v0.3.0 — Evidence-based skill improvements
 
 **Problem:** Website work can expose useful improvements to the toolkit, but those observations need continuity, evidence, and a distinction between a site's preferences and reusable guidance.

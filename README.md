@@ -1,23 +1,23 @@
 # Website Builder
 
-Turn your ideas into a website with your coding agent. Create a new site, improve an existing one, and edit its content through Wagtail.
+Turn your ideas into a custom WordPress website with your coding agent. Create a new theme, improve an existing site, and edit routine content in WordPress.
 
-Website Builder gives **Cursor, Claude Code, and Codex** a shared workflow for **Astro, Tailwind CSS, and Wagtail**. You direct the look, content, and purpose. Your agent handles the technical work and shows you the result.
+Website Builder gives **Cursor, Claude Code, and Codex** a shared workflow for **WordPress, PHP, and Tailwind CSS** on conventional LAMP-compatible hosting. You direct the look, content, and purpose. Your agent handles the technical work and shows you the result. This branch develops the WordPress workflow; the previous Astro/Wagtail toolkit remains in its earlier revisions.
 
 ## Start here
 
 Open your coding agent in a folder where it can work, and paste:
 
-> Read https://github.com/Marcelle2003/website-builder and follow START_HERE.md to set up Website Builder for this coding agent. Install what you can, check that it works, and guide me through anything that needs my help. I am not technical.
+> Read https://github.com/Marcelle2003/website-builder/tree/wordpress-theme-builder and follow START_HERE.md from that branch to set up Website Builder for this coding agent. Install what you can, check that it works, and guide me through anything that needs my help. I am not technical.
 
 You do not need to install Node, npx, Python, or Git before asking. The agent checks what is available and guides or performs the missing setup. It needs access to files, a terminal, and the internet; an ordinary chat without those tools cannot do the installation. Administrator prompts may need your help.
 
-If the agent cannot read the URL, use GitHub's **Code → Download ZIP**, extract the folder, open it in your coding agent, and ask it to read `START_HERE.md`.
+If the agent cannot read the URL, select the **wordpress-theme-builder** branch, use GitHub's **Code → Download ZIP**, extract the folder, open it in your coding agent, and ask it to read `START_HERE.md`.
 
 ## Four website modes and a review mode
 
 - **Setup:** “Set up Website Builder on this computer.” Installs the skill, its supporting framework skills, and the necessary development tools.
-- **Setup website:** “Prepare a new website called Willow Studio.” Creates and connects an Astro frontend, Tailwind styling, and a Wagtail content editor.
+- **Setup website:** “Prepare a new website called Willow Studio.” Prepares local WordPress, a custom theme, Tailwind styling, and the project's editing model.
 - **Create:** “Create a warm, playful website for my ceramics studio. Here are my photos and some references I like.” Develops the content, design, pages, and interactions with you.
 - **Improve:** “The mobile menu opens abruptly. Make it smooth, and keep the existing design.” Inspects and improves the relevant parts of your site.
 - **Review skill:** “Review the Website Builder feedback from these projects.” Uses the local notes you designate to propose improvements to the toolkit. It proposes changes by default; it applies and publishes them when you authorize that work.
@@ -46,16 +46,22 @@ Use `review-skill` when you want to turn those observations into a reviewable pr
 
 - A homepage that explains the business, audience, and next step.
 - A considered visual direction, useful imagery, responsive layouts, and consistent colours and typography.
-- Restrained motion for menus, FAQs, controls, galleries, and navigation when it helps the experience.
+- Intentional motion, from refined menus and FAQs to coordinated typography and scroll sequences when the creative direction calls for them.
 - Accessible interactions, reduced-motion support, and mobile verification.
-- Fast Astro pages, purposeful client-side interactivity, and reusable Tailwind design tokens.
-- Wagtail editing for routine content, including a verified path from publishing an edit to seeing it on the website.
+- Custom WordPress templates, purposeful JavaScript, and reusable Tailwind design tokens aligned with editor styles.
+- WordPress editing for routine content, including a verified path from saving an edit to seeing it on the website.
 
-It preserves existing project choices when improving a site. A visual change does not authorize changing accounts, permissions, payment flows, or business rules. New sites use the full three-part stack by default; you can request a simpler frontend-only site.
+New sites default to a **custom hybrid theme**: PHP templates and reusable components shape distinctive layouts, while WordPress provides content controls and the block editor where useful. Durable content types and business features belong in a companion plugin. AI or a developer handles structural design changes; the theme does not automatically include a drag-and-drop builder.
+
+Block themes can be equally expressive and remain an option when the team wants to edit entire layouts visually. The workflow preserves explicit choices and existing architecture, including existing builders. A visual change does not authorize a framework migration or changes to accounts, permissions, payment flows, or business rules. Astro and headless WordPress are not needed for the default workflow.
+
+CSS handles simple movement. GSAP is optional for coordinated animation and scroll choreography, with mobile and reduced-motion alternatives. The agent inspects reference interactions in a browser where available, rather than treating a screenshot as evidence of animation. Setup and reusable components save time; distinctive design still benefits from iteration with you.
 
 ## Installation details for agents
 
 Read [START_HERE.md](START_HERE.md), then the [setup workflow](skills/website-builder/references/setup.md). The included Python installer needs Python 3.10 or newer, uses the standard library, and does not require npx. It installs complete skill folders for the selected agent. Supporting skills are fetched at the reviewed commits in [the manifest](skills/website-builder/supporting-skills.json).
+
+The supporting set combines selected official WordPress skills, Tailwind guidance, and frontend design guidance. Specialized block development, environment, performance, and animation skills are installed when relevant. Website Builder supplies the hybrid-theme workflow and coordinates these specialists; it does not load every skill for every task. See [supporting skills](skills/website-builder/references/supporting-skills.md) for the exact sources, selection, and review notes.
 
 Preview an installation from the repository folder:
 
@@ -69,7 +75,7 @@ Setup does not publish a website or create paid hosting accounts. Deployment can
 
 ## Versions and maintenance
 
-The current release is **v0.3.0**. For a fixed version, give your agent the release/tag URL instead of the default branch. To update, ask it to inspect the new release and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+This branch targets **v0.4.0** and is not a published release. Use the branch URL above for the WordPress workflow, or an exact commit URL for a fixed revision. To update, ask your agent to inspect the chosen revision and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
 
 The installed skill is a working copy for your agent, separate from the toolkit's source repository. Reviewing or publishing a toolkit improvement requires the intended source checkout; editing an installed copy does not update GitHub.
 

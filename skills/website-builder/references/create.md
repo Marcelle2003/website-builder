@@ -12,11 +12,19 @@ If the user is still exploring direction, describe one recommended direction and
 
 Prepare missing infrastructure via [project setup](setup-website.md), including the [persistent project instructions](project-instructions.md). Create the brief yourself from the conversation using the [template](../assets/WEBSITE_BRIEF.md); do not ask the owner to complete it as a form. Load the relevant specialist skills and [design and motion guidance](design-and-motion.md).
 
-Build a representative page with the real navigation, typography, colour roles, content hierarchy, images, and mobile behaviour. Establish reusable components and tokens from that page, then carry the direction through the requested pages. Use real content lengths early so a design does not depend on unrealistically short copy.
+Inspect supplied reference websites in a browser when available, including scrolling, opening and closing menus, and transitions between pages. Separate observed behaviour from ideas inferred from a screenshot. Translate the references into a direction suited to this business, including where movement adds character or explains relationships.
 
-Make routine business content editable in Wagtail. Keep stable layout/interaction code in Astro; model appropriate sections as content blocks when editors need to add or reorder them. Explain the available editing controls in plain language. Do not promise a visual drag-and-drop layout editor unless one has actually been built.
+Build a representative page with the real navigation, typography, colour roles, content hierarchy, images, mobile behaviour, and proposed signature interaction where appropriate. Establish reusable theme components and tokens from that page, then carry the direction through the requested pages. Use real content lengths early so a design does not depend on unrealistically short copy.
 
-Choose useful Astro and Tailwind capabilities: reusable layouts, optimized responsive images, static or server-rendered content appropriate to publishing, scoped interactive islands where needed, responsive utility composition, explicit state variants, and shared tokens. Do not add a client framework or heavy animation library just to make the technology visible.
+## Build the theme and its editing model together
+
+For the default hybrid approach, keep distinctive layouts and animation sequences in PHP templates and reusable theme components. Model routine content in WordPress: for example, a project has a title, description, category, images, and optional case-study content. Use the block editor for suitable page bodies and reusable sections; expose only the layout controls that editors actually need. Keep durable content types, taxonomies, and business behaviour in a companion plugin so they survive a theme change. Do not install a field plugin or paid dependency unless the chosen editing model needs it and its use is authorized.
+
+Explain editing through a concrete example: an editor changes a project's images and copy in WordPress; the theme supplies its layout and movement. AI can change that design when requested. A custom theme does not automatically provide a drag-and-drop editor, and a block theme is also a valid choice when full visual layout editing is wanted.
+
+Use WordPress APIs for content, media, menus, asset loading, and template hooks. Match frontend styles and editor presets deliberately, using `theme.json` where useful. Keep colour and typography roles aligned with Tailwind tokens rather than maintaining competing design systems. Build CSS from classes present in theme/plugin source; map editor choices to complete known classes or CSS variables rather than expecting Tailwind to scan arbitrary database content. Load page-specific scripts only where needed.
+
+Implement simple transitions in CSS; add a coordinated animation library only for sequences that justify it. Read [design and motion guidance](design-and-motion.md) for reference inspection, choreography, and accessible fallbacks. Do not add a frontend framework, headless API, or client-side router merely to make the stack look sophisticated.
 
 ## Refine with the user
 

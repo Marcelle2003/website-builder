@@ -12,15 +12,15 @@ Requested pages and features, roles if applicable, existing behaviour to preserv
 
 ## Creative direction
 
-Brand name, tone, references, colour roles, typography, image treatment, motion preferences, and decisions the owner likes.
+Brand name, tone, references, colour roles, typography, image treatment, and decisions the owner likes. Record accepted motion direction, significant interactions, and mobile/reduced-motion adaptations without treating every reference effect as a requirement.
 
 ## Content and editing
 
-Supplied versus demonstration content, imagery sources/credits, Wagtail-editable fields or sections, and the publish-to-website update path.
+Supplied versus demonstration content, imagery sources/credits, WordPress-editable pages/blocks/fields, and publishing/cache behaviour. State what editors can change and which layout or animation changes are made through the AI. Preserve the actual editing model when adopting an existing site.
 
 ## Project and preview
 
-Stack and selected versions, where run instructions live, local preview/CMS URLs, and relevant environment-variable names without values.
+Stack and selected versions, local WordPress environment and hosting target, where run instructions live, local preview/admin URLs, and relevant configuration names without secret values. Record an existing non-WordPress stack accurately; this brief does not authorize migration.
 
 Keep detailed architecture and verified commands in `AGENTS.md` and the run guide; reference them here instead of maintaining competing copies.
 

@@ -2,12 +2,108 @@
   "schema": 1,
   "skills": [
     {
-      "name": "astro-best-practices",
-      "repository": "https://github.com/incluud/astro-agent-skills",
-      "revision": "4b4355ecea8ef4f68c9025f3de5a73c27df59310",
-      "path": "skills/astro-best-practices",
+      "name": "wordpress-router",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wordpress-router",
       "license_path": "LICENSE",
-      "notes": "Community Astro baseline, MIT. Copy the complete skill directory and repository license. This revision contains one SKILL.md and has no sibling resources or runtime dependency. Verify version-sensitive Astro APIs against official documentation."
+      "default": true,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Route WordPress tasks; planned skills in its decision tree are not installed capabilities. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-project-triage",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-project-triage",
+      "license_path": "LICENSE",
+      "default": true,
+      "requires": [],
+      "notes": "Inspect repository and versions. Resolve script paths from the installed directory; its theme.json heuristic can misclassify hybrid themes. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-plugin-development",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-plugin-development",
+      "license_path": "LICENSE",
+      "default": true,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Site functionality, content types, hooks, and secure plugin development; only create a plugin when needed. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-wpcli-and-ops",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-wpcli-and-ops",
+      "license_path": "LICENSE",
+      "default": true,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Local setup and operational commands; target the intended installation and distinguish read-only, draft, publish, and destructive actions. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-block-development",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-block-development",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Custom editable blocks when needed; does not require a full block theme. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-block-themes",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-block-themes",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Full block themes when selected, or scoped theme.json/pattern references; preserve the agreed hybrid architecture. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-performance",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-performance",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "Backend performance investigation, not browser or animation performance validation. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-phpstan",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-phpstan",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "wp-project-triage"
+      ],
+      "notes": "PHP static analysis when appropriate; installing instructions does not install Composer or PHPStan. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
+    },
+    {
+      "name": "wp-env",
+      "repository": "https://github.com/WordPress/agent-skills",
+      "revision": "55cd0f78b996f453c194a1a6ecc5c9a2e0f6cf15",
+      "path": "skills/wp-env",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [],
+      "notes": "Only when choosing @wordpress/env for local development; runtime prerequisites are separate from this skill. GPL-2.0-or-later; preserve the complete skill folder and license. See supporting-skills.md for compatibility and path caveats."
     },
     {
       "name": "tailwind",
@@ -15,20 +111,64 @@
       "revision": "cf93c57cac89d6fc3e4194686000411567f5caf3",
       "path": "skills/.curated/tailwind",
       "license_path": "LICENSE",
-      "notes": "Community Tailwind CSS v4 guidance, MIT. Copy all 50 files, including AGENTS.md, references, assets/templates, README.md, and metadata.json. Read references/supporting-skills.md before use: upstream examples contain known errors, including @variant instead of @custom-variant for dark-mode definition and invalid Sass-style native nesting. Official version-matched docs and the kit's corrections take precedence; this is a scoped review, not an exhaustive correctness audit."
+      "notes": "Community Tailwind CSS v4 guidance, MIT. Copy the complete folder and root license. Read references/supporting-skills.md for reviewed corrections; validate examples against version-matched official docs and adapt to WordPress PHP/block sources.",
+      "default": true
     },
     {
-      "name": "wagtail",
-      "repository": "https://github.com/wagtail/wagtail-cli",
-      "revision": "f079f20210e7f0f30e2f30f530ac9f363df70683",
-      "path": "skills/wagtail",
+      "name": "frontend-design",
+      "repository": "https://github.com/anthropics/skills",
+      "revision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "path": "skills/frontend-design",
+      "license_path": "skills/frontend-design/LICENSE.txt",
+      "default": true,
+      "notes": "Anthropic visual-design guidance, Apache-2.0. Preserve the skill-local license. Creative framing and assumed client history are not facts; the actual user brief and existing brand decisions take precedence."
+    },
+    {
+      "name": "gsap-core",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "revision": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "path": "skills/gsap-core",
       "license_path": "LICENSE",
-      "runtime": {
-        "package": "wagtail-cli",
-        "version": "0.4.0",
-        "python_min": "3.12"
-      },
-      "notes": "Official Wagtail discovery skill; this folder contains one SKILL.md. Requires the separately installed wagtail-cli 0.4.0 runtime, which bundles the specialist skills and resources loaded by wt. The stub declares MIT; the repository and runtime declare BSD-3-Clause. Preserve the unmodified declaration, repository license, and provenance. CLI API operations target API v3 preview, not v2; never silently upgrade an existing CMS. See supporting-skills.md for setup and compatibility limits."
+      "default": false,
+      "requires": [],
+      "notes": "Official GSAP instructions, MIT. Read supporting-skills.md corrections before using examples. The GSAP runtime is installed separately only when the design needs it; runtime licensing is separate from the skill license."
+    },
+    {
+      "name": "gsap-timeline",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "revision": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "path": "skills/gsap-timeline",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "gsap-core"
+      ],
+      "notes": "Official GSAP instructions, MIT. Read supporting-skills.md corrections before using examples. The GSAP runtime is installed separately only when the design needs it; runtime licensing is separate from the skill license."
+    },
+    {
+      "name": "gsap-scrolltrigger",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "revision": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "path": "skills/gsap-scrolltrigger",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "gsap-core",
+        "gsap-timeline"
+      ],
+      "notes": "Official GSAP instructions, MIT. Read supporting-skills.md corrections before using examples. The GSAP runtime is installed separately only when the design needs it; runtime licensing is separate from the skill license."
+    },
+    {
+      "name": "gsap-performance",
+      "repository": "https://github.com/greensock/gsap-skills",
+      "revision": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "path": "skills/gsap-performance",
+      "license_path": "LICENSE",
+      "default": false,
+      "requires": [
+        "gsap-core"
+      ],
+      "notes": "Official GSAP instructions, MIT. Read supporting-skills.md corrections before using examples. The GSAP runtime is installed separately only when the design needs it; runtime licensing is separate from the skill license."
     }
   ]
 }

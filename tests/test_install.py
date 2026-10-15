@@ -129,6 +129,53 @@ class InstallerTests(unittest.TestCase):
         with self.assertRaises(installer.InstallError):
             installer.load_manifest(manifest)
 
+    def test_selection_keeps_optional_skills_out_and_resolves_dependencies_once(self):
+        entries = [
+            {"name": "baseline", "default": True},
+            {"name": "motion", "default": False, "requires": ["core", "timeline"]},
+            {"name": "timeline", "default": False, "requires": ["core"]},
+            {"name": "core", "default": False},
+            {"name": "unrelated", "default": False},
+        ]
+        self.assertEqual([x["name"] for x in installer.select_supporting(entries, True, [])], ["baseline"])
+        self.assertEqual([x["name"] for x in installer.select_supporting(entries, False, ["motion", "core"])], ["core", "timeline", "motion"])
+        self.assertEqual([x["name"] for x in installer.select_supporting(entries, True, ["motion"])], ["baseline", "core", "timeline", "motion"])
+
+    def test_manifest_rejects_invalid_dependency_graph_and_selection_flags(self):
+        manifest = self.root / "manifest.json"
+        for changes in ({"requires": ["absent"]}, {"requires": ["example"]},
+                        {"requires": "example"}, {"default": "false"}):
+            with self.subTest(changes=changes):
+                entry = {**self.entry(), **changes}
+                manifest.write_text(json.dumps({"schema": 1, "skills": [entry]}))
+                with self.assertRaises(installer.InstallError):
+                    installer.load_manifest(manifest)
+        with self.assertRaises(installer.InstallError):
+            installer.select_supporting([
+                {"name": "a", "requires": ["b"]},
+                {"name": "b", "requires": ["a"]},
+            ], False, ["a"])
+
+    def test_unknown_requested_skill_fails_before_any_write_or_download(self):
+        before = set(self.root.rglob("*"))
+        with patch.object(installer, "urlopen") as network, contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            status = installer.main(["--agent", "codex", "--scope", "project", "--project", str(self.root), "--supporting", "not-a-reviewed-skill"])
+        self.assertEqual(status, 1)
+        network.assert_not_called()
+        self.assertEqual(set(self.root.rglob("*")), before)
+
+    def test_explicit_skill_dry_run_resolves_dependencies_without_writes(self):
+        before = set(self.root.rglob("*"))
+        entries = [{"name": "core", "default": False}, {"name": "motion", "default": False, "requires": ["core"]}]
+        output = io.StringIO()
+        with patch.object(installer, "load_manifest", return_value=entries), patch.object(installer, "urlopen") as network, contextlib.redirect_stdout(output):
+            status = installer.main(["--agent", "cursor", "--scope", "project", "--project", str(self.root), "--supporting", "motion", "--dry-run"])
+        self.assertEqual(status, 0)
+        self.assertIn(str(self.root / ".cursor/skills/core"), output.getvalue())
+        self.assertIn(str(self.root / ".cursor/skills/motion"), output.getvalue())
+        network.assert_not_called()
+        self.assertEqual(set(self.root.rglob("*")), before)
+
     @staticmethod
     def entry():
         return {"name": "example", "repository": "https://github.com/example/repo", "revision": "a" * 40, "path": "skills/example", "license_path": "LICENSE"}
@@ -155,6 +202,24 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual((destination / "UPSTREAM-LICENSE").read_text(), "Upstream licence")
         self.assertEqual(json.loads((destination / "UPSTREAM-SOURCE.json").read_text())["revision"], "a" * 40)
         self.assertFalse((destination / "not-selected.txt").exists())
+
+    def test_repository_archive_is_reused_but_different_revision_downloads_again(self):
+        cache = {}
+        with patch.object(installer, "urlopen", side_effect=[self.archive(), self.archive()]) as network:
+            installer.download_skill(self.entry(), self.root / "first", cache)
+            installer.download_skill(self.entry(), self.root / "second", cache)
+            self.assertEqual(network.call_count, 1)
+            entry = {**self.entry(), "revision": "b" * 40}
+            installer.download_skill(entry, self.root / "new-revision", cache)
+            self.assertEqual(network.call_count, 2)
+        self.assertEqual((self.root / "second/references/guide.md").read_text(), "A full folder")
+
+    def test_skill_local_license_is_preserved(self):
+        entry = {**self.entry(), "license_path": "skills/example/LICENSE.txt"}
+        with patch.object(installer, "urlopen", return_value=self.archive(("repo-pin/skills/example/LICENSE.txt", "Skill-specific licence"))):
+            installer.download_skill(entry, self.root / "downloaded")
+        self.assertEqual((self.root / "downloaded/LICENSE.txt").read_text(), "Skill-specific licence")
+        self.assertEqual((self.root / "downloaded/UPSTREAM-LICENSE").read_text(), "Skill-specific licence")
 
     def test_archive_traversal_is_rejected(self):
         with patch.object(installer, "urlopen", return_value=self.archive(("repo-pin/skills/example/../../escaped", "bad"))):

@@ -1,6 +1,6 @@
 # Validation scope
 
-Release v0.3.0 retains deterministic, offline installer tests for:
+The v0.4.0 WordPress branch retains deterministic, offline installer tests for:
 
 - Selected-agent user/project destinations and required project arguments.
 - Dry-run behaviour without writes or network requests.
@@ -10,6 +10,8 @@ Release v0.3.0 retains deterministic, offline installer tests for:
 - Concurrent installer locks.
 - Full revision pins, archive limits, traversal and symlink rejection.
 - Pinned-download extraction, upstream licence preservation, and provenance.
+- Default versus optional selections, dependency ordering/deduplication, and invalid graph rejection before writes.
+- Archive reuse by repository and revision, and preservation of skill-local licenses.
 
 Run `python3 -m unittest discover -s tests -v` from the repository root. GitHub Actions runs the same suite on Linux, macOS, and Windows with Python 3.10 and 3.13. Consult the [actual workflow runs](https://github.com/Marcelle2003/website-builder/actions) for results; a configured job is not evidence that it passed.
 
@@ -29,4 +31,13 @@ For v0.3.0 on the same date:
 - An independent agent exercised the new workflow against a synthetic project containing duplicate reports, a separate reported disclosure failure, a site-specific colour preference, and an unavailable inbox. It preserved existing notes, combined the reports without double-counting, distinguished two reported events from zero browser-verified events, retained local evidence when collection failed, and added local ignore rules.
 - In a subsequent read-only review of that fixture, it checked the source and found the proposed animation guidance already existed, classified the colour choice as project-specific, and did not follow an upload instruction embedded in a report. No source patch was justified. Hash checks across all 36 fixture files confirmed the review changed no files. This scenario did not execute a browser, a network upload, or an agent application other than the testing agent.
 
-These checks do **not** constitute a complete first-run setup on a physical Mac, an end-to-end installation inside all three coding-agent applications, or proof of every framework example. The toolkit itself was authored on Linux. Browser and CMS verification of a generated website belongs to that website's run and must be recorded separately.
+For the v0.4.0 WordPress branch on 2026-10-15:
+
+- All 20 offline installer tests passed locally on Linux, along with skill format validation, local Markdown resource-link checks, and `git diff --check`.
+- A real download/install into an isolated temporary project copied Website Builder and all 15 reviewed supporting skills (the six defaults plus nine optional skills). Repeating that selection reported all 16 folders unchanged. Licenses, full resources, manifest provenance, and expected skill names were checked. Copies into the Claude Code and Cursor project destinations also succeeded on Linux; this verifies destination handling, not those agent applications.
+- An isolated upgrade from v0.3.0 to v0.4.0 retained a recoverable old-version backup, preserved a fixture's existing Astro skill and website brief, and left a repeat install unchanged. No personal installed skills or actual website content were modified.
+- Source inspection covered the pinned WordPress, GSAP, and frontend-design archives and retained the prior Tailwind review. Known upstream errors and compatibility limits are recorded in the supporting-skills reference. Downloaded upstream scripts were not executed. No WordPress/GSAP runtime was installed as a side effect of copying instructions.
+- An independent scenario review used a nontechnical Mac/Claude setup with an existing WordPress application and no Node/npx, plus a scoped animated-menu/editable-projects change in a hybrid theme. It preserved the existing environment and architecture, separated runtime setup from skill installation, chose simple CSS for the menu, and kept production publishing outside scope. Its finding about Node-only inspector examples resulted in an explicit manual-inspection fallback. This was a read-only workflow review, not execution on a Mac or a running WordPress installation.
+- A separate implementation review found no material installer/manifest regression. CI runs the same 20 tests across its configured OS/Python matrix; check the actual branch run for its result.
+
+These checks do **not** constitute a complete first-run setup on a physical Mac, an end-to-end installation inside all three coding-agent applications, or proof of every framework example. No complete WordPress site or animation was generated and browser-tested for this toolkit update. The toolkit itself was authored on Linux. Browser and CMS verification of a generated website belongs to that website's run and must be recorded separately.

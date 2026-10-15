@@ -76,7 +76,40 @@ def load_manifest(path: Path) -> list[dict]:
             raise InstallError(f"{name} must use a full pinned commit SHA.")
         safe_relative(item["path"])
         safe_relative(item["license_path"])
+        if not isinstance(item.get("default", True), bool):
+            raise InstallError(f"Invalid default selection for {name}.")
+        if not isinstance(item.get("requires", []), list) or not all(
+                isinstance(dependency, str) for dependency in item.get("requires", [])):
+            raise InstallError(f"Invalid dependencies for {name}.")
+    # Validate the complete graph, including optional skills not selected this run.
+    select_supporting(data["skills"], False, [item["name"] for item in data["skills"]])
     return data["skills"]
+
+
+def select_supporting(entries: list[dict], defaults: bool, requested: list[str]) -> list[dict]:
+    """Resolve explicit choices and their dependencies without installing every skill."""
+    by_name = {item["name"]: item for item in entries}
+    selected = []
+    visited = set()
+    visiting = set()
+
+    def visit(name: str) -> None:
+        if name not in by_name:
+            raise InstallError(f"Unknown supporting skill: {name}. See supporting-skills.json for available names.")
+        if name in visiting:
+            raise InstallError(f"Supporting-skill dependency cycle includes {name}.")
+        if name in visited:
+            return
+        visiting.add(name)
+        for dependency in by_name[name].get("requires", []):
+            visit(dependency)
+        visiting.remove(name)
+        visited.add(name)
+        selected.append(by_name[name])
+
+    for name in [*(item["name"] for item in entries if defaults and item.get("default", True)), *requested]:
+        visit(name)
+    return selected
 
 
 def ignored(directory: str, names: list[str]) -> set[str]:
@@ -110,14 +143,18 @@ def validate_skill_name(folder: Path, expected: str) -> None:
         raise InstallError(f"SKILL.md does not declare the expected name: {expected}")
 
 
-def download_skill(item: dict, destination: Path) -> None:
+def download_skill(item: dict, destination: Path, archive_cache: dict | None = None) -> None:
     repo = item["repository"].removeprefix("https://github.com/")
     url = f"https://codeload.github.com/{repo}/zip/{item['revision']}"
-    request = Request(url, headers={"User-Agent": "website-builder-installer/0.1"})
-    with urlopen(request, timeout=60) as response:
-        payload = response.read(MAX_DOWNLOAD + 1)
+    payload = archive_cache.get(url) if archive_cache is not None else None
+    if payload is None:
+        request = Request(url, headers={"User-Agent": "website-builder-installer/0.4"})
+        with urlopen(request, timeout=60) as response:
+            payload = response.read(MAX_DOWNLOAD + 1)
     if len(payload) > MAX_DOWNLOAD:
         raise InstallError(f"Archive exceeds download limit: {repo}")
+    if archive_cache is not None:
+        archive_cache[url] = payload
     prefix = safe_relative(item["path"])
     license_path = safe_relative(item["license_path"])
     with zipfile.ZipFile(io.BytesIO(payload)) as archive:
@@ -213,13 +250,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--agent", choices=AGENTS, required=True)
     parser.add_argument("--scope", choices=("user", "project"), required=True)
     parser.add_argument("--project", help="Existing website folder; required for project scope")
-    parser.add_argument("--with-supporting", action="store_true", help="Download the reviewed pinned framework skills")
+    parser.add_argument("--with-supporting", action="store_true", help="Install the default pinned WordPress, Tailwind, and design guidance")
+    parser.add_argument("--supporting", nargs="+", default=[], metavar="NAME", help="Also install named supporting skills and their dependencies; see supporting-skills.json")
     parser.add_argument("--dry-run", action="store_true", help="Show destinations without writes or network requests")
     parser.add_argument("--update", action="store_true", help="Back up and replace differing existing skills")
     args = parser.parse_args(argv)
     try:
         root = destination_root(args.agent, args.scope, args.project)
-        supporting = load_manifest(SKILL / "supporting-skills.json") if args.with_supporting else []
+        manifest = load_manifest(SKILL / "supporting-skills.json") if args.with_supporting or args.supporting else []
+        supporting = select_supporting(manifest, args.with_supporting, args.supporting)
         version = (SKILL / "VERSION").read_text(encoding="utf-8").strip()
         print(f"Website Builder {version}; agent={args.agent}; scope={args.scope}")
         for name in ["website-builder", *(entry["name"] for entry in supporting)]:
@@ -228,12 +267,13 @@ def main(argv: list[str] | None = None) -> int:
             print("Dry run only. No files changed and no downloads performed.")
             return 0
         backup_root = root.parent / ".website-builder-backups"
+        archive_cache = {}  # One bounded download per pinned repository in this run.
         with install_lock(root):
             print(install_tree(SKILL, root / "website-builder", {"name": "website-builder", "version": version}, args.update, backup_root))
             for entry in supporting:
                 with tempfile.TemporaryDirectory(prefix="website-builder-download-") as temporary:
                     source = Path(temporary) / entry["name"]
-                    download_skill(entry, source)
+                    download_skill(entry, source, archive_cache)
                     print(install_tree(source, root / entry["name"], entry, args.update, backup_root))
                 if entry.get("runtime"):
                     print(f"Additional runtime required for {entry['name']}: {json.dumps(entry['runtime'])}")

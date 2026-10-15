@@ -2,20 +2,22 @@
 
 ## Inspect before choosing the change
 
-Read project guidance, the website brief, dependency manifests, and relevant components. Inspect the supplied page in the browser when available, including a narrow viewport and the interaction mentioned. A screenshot alone cannot verify opening/closing, keyboard behaviour, or responsive layout.
+Read project guidance, the website brief, dependency manifests, and relevant components. For WordPress, establish the active parent/child theme, classic/hybrid/block architecture, editor or builder in use, and relevant plugins before choosing where to change it. Inspect the supplied page in the browser when available, including a narrow viewport and the interaction mentioned. A screenshot alone cannot verify opening/closing, keyboard behaviour, or responsive layout.
 
 Preserve existing instruction files and their scope. When adopting Website Builder into the project, merge missing relevant guidance using [project instructions](project-instructions.md); do not overwrite existing rules with the template. If the brief is missing during authorized implementation, create it from available facts and conversation rather than making the owner fill it out.
 
 Determine whether the problem comes from content clarity, missing imagery, hierarchy, visual consistency, or interaction. If the user asks whether to redesign, explain the smallest coherent intervention that addresses the evidence. If they request a specific change, complete that scope rather than imposing a redesign.
 
-Preserve the brand elements and behaviour the user likes. Do not migrate the framework, install a CMS, change user roles, or alter publishing permissions for a visual request. Load only the relevant specialist guidance; apply it against actual installed versions.
+Preserve the brand elements and behaviour the user likes. Do not migrate the framework, replace a page builder, convert a block theme to hybrid, change user roles, or alter publishing permissions for a visual request. Load only the relevant specialist guidance; apply it against actual installed versions. In a parent theme managed by an upstream vendor, use the project's supported extension or child-theme approach rather than edits that an update will erase.
+
+Check where the rendered output actually originates. WordPress content, saved Site Editor templates/styles, a builder, plugins, and caches can override or outlast theme-file changes. Do not delete editor customizations to force a result; preserve the existing design and reconcile the specific source of the requested change. Verify both the visitor view and affected editor controls.
 
 ## Make the requested improvement consistent
 
 - **Content:** clarify what the business does, who can do what, and the next action. Check navigation, homepage, detail pages, forms, emails only if in scope, and empty/error states for conflicting wording. Copy must reflect implemented behaviour or clearly describe a future step.
 - **Colour/type:** change semantic tokens first, then find stale literal values, gradients, opacity blends, SVG fills, borders, hover/focus/disabled states, and image overlays. Check representative pages and forms. Preserve semantic success/error distinctions. An exact colour request should not be silently replaced; show an accessible use of it or clearly explain any remaining contrast limitation.
 - **Imagery:** use credible subject-matched assets and preserve user uploads/CMS overrides. Prefer a curated stable selection over a live random-image endpoint. See the source/credit requirements in [design guidance](design-and-motion.md).
-- **Interaction:** improve the entire state change, including closing, interruption, keyboard use, reduced motion, and repeated navigation. A colour transition alone does not make an expandable panel animate.
+- **Interaction:** improve the entire state change, including closing, interruption, keyboard use, reduced motion, and repeated navigation. A colour transition alone does not make an expandable panel animate. For broader creative work, inspect reference interactions and propose purposeful sequences alongside the layout; do not restrict every design to generic fade-ins.
 
 Use project tokens and components so the correction applies consistently. Read [design and motion guidance](design-and-motion.md) when relevant. Avoid adding unrelated flourishes simply because a framework supports them.
 

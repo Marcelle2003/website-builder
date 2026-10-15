@@ -1,4 +1,4 @@
 interface:
   display_name: "Website Builder"
-  short_description: "Create and refine websites from your creative direction"
-  default_prompt: "Use $website-builder to help me create or improve my website."
+  short_description: "Create and refine expressive WordPress themes"
+  default_prompt: "Use $website-builder to help me create or improve my WordPress website."
