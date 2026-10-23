@@ -2,6 +2,14 @@
 
 This is the public record of approved, reusable toolkit changes. Keep raw project observations, client details, and local inbox configuration outside this repository. See [feedback recording](../skills/website-builder/references/feedback.md) and [skill review](../skills/website-builder/references/review-skill.md) for the workflow.
 
+## v0.4.1 branch — Scroll and hover movement defaults
+
+**Problem:** A broad request to add movement did not explicitly establish scroll animation and hover/focus feedback as the starting direction.
+
+**Approved change:** Add those defaults with selective use, plus optional entrance sequences, disclosures, action feedback, content transitions, and navigation feedback. Preserve narrow requests and explicit static designs. Specify touch behaviour, reduced-motion visibility, normal scrolling, and creative justification for heavier effects. Add corresponding browser verification guidance. Supporting skill versions and runtime dependencies are unchanged.
+
+**Verification:** All 20 offline installer tests, skill format validation, local Markdown resource-link checks, and diff checks passed on Linux. A manual instruction walkthrough covered a broad movement request, an FAQ-only fix, a static-design exception, and touch/reduced-motion use. This was an instruction review, not an independent agent test or an executed website animation. Version 0.4.1 is a branch update, not a tagged release.
+
 ## v0.4.0 branch — Custom WordPress theme workflow
 
 **Problem:** Teams maintaining conventional WordPress sites need AI-assisted creative development without a new CMS or a headless deployment. Bespoke motion and layouts also need a clear editing model and relevant specialist guidance.

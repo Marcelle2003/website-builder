@@ -75,7 +75,7 @@ Setup does not publish a website or create paid hosting accounts. Deployment can
 
 ## Versions and maintenance
 
-This branch targets **v0.4.0** and is not a published release. Use the branch URL above for the WordPress workflow, or an exact commit URL for a fixed revision. To update, ask your agent to inspect the chosen revision and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+This branch targets **v0.4.1** and is not a published release. Use the branch URL above for the WordPress workflow, or an exact commit URL for a fixed revision. To update, ask your agent to inspect the chosen revision and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
 
 The installed skill is a working copy for your agent, separate from the toolkit's source repository. Reviewing or publishing a toolkit improvement requires the intended source checkout; editing an installed copy does not update GitHub.
 

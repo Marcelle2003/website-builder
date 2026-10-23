@@ -16,6 +16,8 @@ When browser tools are available, inspect the rendered result at a representativ
 
 Exercise affected interactions: open and close menus/FAQs, rapid toggle, gallery navigation, back/forward navigation, keyboard activation/Escape/focus return, and reduced-motion preferences where supported. For scroll sequences, inspect actual movement through the entire section, both scroll directions, responsive layout changes, and final content visibility. Check animation setup/cleanup on any navigation mechanism actually used. Test actual forms with safe local data; do not submit messages or payments to real services as a visual check.
 
+For broad movement work, exercise scroll reveals and hover/focus feedback on the affected components. Check touch activation without hover, direct links and restored scroll positions, reduced-motion content visibility, and any entrance sequence with immediate navigation/actions. Confirm feedback matches actual action outcomes.
+
 For a palette change, inspect computed styles and interactive states as well as searching source literals. For image replacements, inspect the rendered image, not only a successful HTTP response. Verify coordinated motion in the browser; a final screenshot cannot establish its timing or behaviour.
 
 For new or materially changed project instructions, follow [fresh-chat verification](project-instructions.md#verify-a-fresh-chat). Check instruction loading independently from installation and build results. Keep the AI-maintained brief current with confirmed decisions and actual implementation status before handing work back.

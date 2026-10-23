@@ -24,6 +24,20 @@ Recommend a coherent motion direction with the page composition. A quiet busines
 
 For a signature sequence, define its purpose, trigger, participating elements, editable content, ending state, and small-screen/reduced-motion treatment before building it. Keep text and images editable without requiring an editor to calculate animation timings. Prototype the sequence with realistic content and verify it in motion before repeating the pattern elsewhere. Do not make content lengths or viewport heights depend on a single desktop screenshot.
 
+## Interpret requests for movement
+
+For a broad request such as “add movement” or “bring the website to life,” include both scroll-triggered animation and hover/focus feedback as the starting direction. Choose a small, coherent set that fits the brand and content; do not animate every element. Preserve explicit requests for a static experience or a narrower change: fixing an FAQ does not authorize adding effects across the site.
+
+- **Scroll reveals:** introduce selected sections, images, or groups as they enter view with restrained opacity/position changes. Prefer revealing once over replaying on every scroll. Keep content accessible on direct links, restored scroll positions, and when scripts fail; avoid long stagger chains that make visitors wait.
+- **Hover and focus:** give links, buttons, cards, and image-led actions clear feedback through colour, underline, border, shadow, or a small transform. Provide equivalent keyboard focus feedback where appropriate. Apply hover-specific movement only to devices that support hover; touch users must be able to act immediately without a first tap merely revealing an action.
+- **Expand and collapse:** smoothly open and close menus, FAQs, filters, and accordions, following the disclosure behaviour below.
+- **Entrance sequences:** optionally coordinate a brief hero heading, image, and call-to-action introduction. Keep navigation and actions available immediately; skip decorative introductions when revisiting if they would interrupt the task.
+- **Interaction feedback:** use press states and meaningful form, cart, or other action feedback to show what happened. Animation must reflect the real pending, success, or error state, never imply an unconfirmed success.
+- **Content transitions:** gently connect changes between tabs, gallery slides, testimonials, or filtered results while keeping selection, focus, and content state clear. Avoid adding autoplay merely to create movement.
+- **Navigation feedback:** consider a compact header on scroll or an active-section indicator when useful for orientation. Avoid layout jumps, obscured anchor targets, and headers that interfere with keyboard focus.
+
+A useful baseline is scroll reveals, hover/focus feedback, and smooth expandable elements where those components exist. Entrance sequences, content transitions, and navigation effects are options, not a mandatory checklist. Reserve parallax, pinned sections, large transforms, and elaborate scroll choreography for a deliberate creative direction; preserve normal scrolling and a simpler mobile experience. Honour reduced-motion preferences from the outset, with visible content and usable controls when decorative motion is removed. Record the chosen direction and any user exceptions in the website brief.
+
 ## Choose the smallest suitable implementation
 
 Use CSS and Tailwind state variants for simple feedback, reveals, and transitions. Consider GSAP timelines and ScrollTrigger when multiple elements need coordinated sequencing, scrubbing, or pinning. Load the relevant optional skills and their review notes through [supporting skills](supporting-skills.md), then check the actual library version and official documentation. An installed animation skill does not mean every site needs its runtime.

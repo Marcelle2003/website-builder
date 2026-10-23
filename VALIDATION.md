@@ -1,6 +1,6 @@
 # Validation scope
 
-The v0.4.0 WordPress branch retains deterministic, offline installer tests for:
+The WordPress branch retains deterministic, offline installer tests for:
 
 - Selected-agent user/project destinations and required project arguments.
 - Dry-run behaviour without writes or network requests.
@@ -39,5 +39,7 @@ For the v0.4.0 WordPress branch on 2026-10-15:
 - Source inspection covered the pinned WordPress, GSAP, and frontend-design archives and retained the prior Tailwind review. Known upstream errors and compatibility limits are recorded in the supporting-skills reference. Downloaded upstream scripts were not executed. No WordPress/GSAP runtime was installed as a side effect of copying instructions.
 - An independent scenario review used a nontechnical Mac/Claude setup with an existing WordPress application and no Node/npx, plus a scoped animated-menu/editable-projects change in a hybrid theme. It preserved the existing environment and architecture, separated runtime setup from skill installation, chose simple CSS for the menu, and kept production publishing outside scope. Its finding about Node-only inspector examples resulted in an explicit manual-inspection fallback. This was a read-only workflow review, not execution on a Mac or a running WordPress installation.
 - A separate implementation review found no material installer/manifest regression. CI runs the same 20 tests across its configured OS/Python matrix; check the actual branch run for its result.
+
+For v0.4.1 on 2026-10-23, all 20 offline installer tests and skill format validation passed on Linux, as did local Markdown resource-link and diff checks. Manual instruction review covered broad movement requests, FAQ-only scope, explicit static designs, and touch/reduced-motion behaviour. The change is guidance only; no new animation runtime or live website was built or browser-tested.
 
 These checks do **not** constitute a complete first-run setup on a physical Mac, an end-to-end installation inside all three coding-agent applications, or proof of every framework example. No complete WordPress site or animation was generated and browser-tested for this toolkit update. The toolkit itself was authored on Linux. Browser and CMS verification of a generated website belongs to that website's run and must be recorded separately.
