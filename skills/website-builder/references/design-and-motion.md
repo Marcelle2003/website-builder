@@ -33,10 +33,16 @@ For a broad request such as “add movement” or “bring the website to life,�
 - **Expand and collapse:** smoothly open and close menus, FAQs, filters, and accordions, following the disclosure behaviour below.
 - **Entrance sequences:** optionally coordinate a brief hero heading, image, and call-to-action introduction. Keep navigation and actions available immediately; skip decorative introductions when revisiting if they would interrupt the task.
 - **Interaction feedback:** use press states and meaningful form, cart, or other action feedback to show what happened. Animation must reflect the real pending, success, or error state, never imply an unconfirmed success.
-- **Content transitions:** gently connect changes between tabs, gallery slides, testimonials, or filtered results while keeping selection, focus, and content state clear. Avoid adding autoplay merely to create movement.
+- **Content transitions:** gently connect changes between form steps, tabs, gallery slides, testimonials, or filtered results while keeping selection, focus, and content state clear. Avoid adding autoplay merely to create movement.
 - **Navigation feedback:** consider a compact header on scroll or an active-section indicator when useful for orientation. Avoid layout jumps, obscured anchor targets, and headers that interfere with keyboard focus.
 
 A useful baseline is scroll reveals, hover/focus feedback, and smooth expandable elements where those components exist. Entrance sequences, content transitions, and navigation effects are options, not a mandatory checklist. Reserve parallax, pinned sections, large transforms, and elaborate scroll choreography for a deliberate creative direction; preserve normal scrolling and a simpler mobile experience. Honour reduced-motion preferences from the outset, with visible content and usable controls when decorative motion is removed. Record the chosen direction and any user exceptions in the website brief.
+
+## Make a motion preview easy to evaluate
+
+When the user asks to see an animation example, choose one clearly visible sequence in an identifiable section, preferably encountered early in ordinary browsing. Make the change legible at the actual viewport and normal scrolling speed; a tiny movement hidden far down the page can fail as a demo even when its code works. Explain where to scroll or hover and what should change. Keep a later section if it better serves the design, but provide a direct route and trigger instructions.
+
+Show the sequence in motion, including its ending state, before repeating it elsewhere. Adjust distance, contrast, pacing or composition when the user cannot see the effect, while keeping text readable, actions available, and touch/reduced-motion alternatives usable. A request for a noticeable demo is not a universal requirement for intense animation or pinned/parallax sections on future websites.
 
 ## Choose the smallest suitable implementation
 

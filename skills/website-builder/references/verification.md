@@ -8,6 +8,8 @@ For a new theme, verify activation on a disposable local or staging installation
 
 Verify editor controls remain usable and represent the promised editing model. Tailwind output must include variants used by editable components; global resets must not damage WordPress or third-party controls. For block-theme or Site Editor changes, account for saved database customizations before concluding that a template file is unused or broken.
 
+Record visual block editing, code-editor saves and media selection as separate results. A code-editor save reaching the frontend does not prove the visual canvas works. If an embedded editor is blank, inspect available browser errors and frame state; try a supported regular-browser session when available. Preserve the working save path and state the unverified editor mode. Do not attribute the symptom to WordPress, the theme or the browser without evidence, or weaken frame/security settings as a generic fix.
+
 When changing PHP that handles data, check context-appropriate escaping, input validation, authorization, and nonce protection where applicable. Keep durable functionality out of theme-only storage. Exercise relevant plugin integrations when the change touches them; a normal theme change does not call for a blanket security audit.
 
 ## Browser evidence
@@ -17,6 +19,10 @@ When browser tools are available, inspect the rendered result at a representativ
 Exercise affected interactions: open and close menus/FAQs, rapid toggle, gallery navigation, back/forward navigation, keyboard activation/Escape/focus return, and reduced-motion preferences where supported. For scroll sequences, inspect actual movement through the entire section, both scroll directions, responsive layout changes, and final content visibility. Check animation setup/cleanup on any navigation mechanism actually used. Test actual forms with safe local data; do not submit messages or payments to real services as a visual check.
 
 For broad movement work, exercise scroll reveals and hover/focus feedback on the affected components. Check touch activation without hover, direct links and restored scroll positions, reduced-motion content visibility, and any entrance sequence with immediate navigation/actions. Confirm feedback matches actual action outcomes.
+
+For a requested motion demo, verify that its change is noticeable at the intended scroll or hover trigger, with realistic content and viewport sizes. Give the user the page, section and exact action to see it; a technically running effect or a still screenshot alone does not establish a useful preview. Follow the [motion preview guidance](design-and-motion.md#make-a-motion-preview-easy-to-evaluate).
+
+For download flows, distinguish activating the button, receiving a response, and confirming file delivery. Where tools permit, inspect the completed artifact's filename, type and relevant contents; a toast or successful click alone is insufficient. If browser automation times out or resets, check available download evidence before retrying, and avoid repeating a submission that could create another order or trigger an external action. A safe direct download can verify the endpoint separately, but does not prove the browser button delivered the file. Report delivery as unverified when the artifact is inaccessible, rather than inferring success or failure from the automation event alone.
 
 For a palette change, inspect computed styles and interactive states as well as searching source literals. For image replacements, inspect the rendered image, not only a successful HTTP response. Verify coordinated motion in the browser; a final screenshot cannot establish its timing or behaviour.
 

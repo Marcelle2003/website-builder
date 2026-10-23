@@ -43,3 +43,24 @@ For the v0.4.0 WordPress branch on 2026-10-15:
 For v0.4.1 on 2026-10-23, all 20 offline installer tests and skill format validation passed on Linux, as did local Markdown resource-link and diff checks. Manual instruction review covered broad movement requests, FAQ-only scope, explicit static designs, and touch/reduced-motion behaviour. The change is guidance only; no new animation runtime or live website was built or browser-tested.
 
 These checks do **not** constitute a complete first-run setup on a physical Mac, an end-to-end installation inside all three coding-agent applications, or proof of every framework example. No complete WordPress site or animation was generated and browser-tested for this toolkit update. The toolkit itself was authored on Linux. Browser and CMS verification of a generated website belongs to that website's run and must be recorded separately.
+
+## v0.4.2 workflow clarification checks — 2026-10-23
+
+All 20 offline installer tests, skill format validation, local Markdown resource-link checks and diff checks passed on Linux. Isolated upgrades from the v0.4.1 branch revision into Codex, Cursor and Claude project destinations copied the complete v0.4.2 skill, retained recoverable v0.4.1 backups, preserved fixture briefs and left repeat installs unchanged. This checked installation paths, not those agent applications. An initial ad hoc comparison included Python cache files intentionally excluded by the installer; comparing distributable payloads corrected the check without changing installer code.
+
+The following synthetic situations were reviewed manually against the revised instructions, without executing a website or using an independent agent:
+
+| Situation | Decision supported by the instructions |
+| --- | --- |
+| Hybrid theme with a nested runtime and root build manifest | Attribute core feature matches to the runtime; classify the theme separately and retain the root build command. |
+| Theme-only repository | Keep the authored theme and its colocated tooling in scope; do not invent a nested runtime. |
+| Theme and authored companion plugin | Preserve both components and the plugin's genuine feature evidence. |
+| Intentional WordPress core work | Keep the requested core tree in scope; no blanket runtime exclusion. |
+| General scan complete but one token scan truncated | Report that scan's uncertainty; do not infer feature absence. |
+| Missing sandbox PID/socket with an existing host service | Inspect the host through the supported route before restarting; do not overwrite ownership records or start another database. |
+| Extraction exits successfully but core checksums fail | Verify version/locale, inspect the mismatch and recover identified files from a verified staging copy while preserving content/configuration/data. |
+| Blank visual editor with a successful code save | Report the save and visual-editor limitation separately; regular-browser checking is an available diagnostic, not proof of a browser defect. |
+| Download event times out after submission | Check available artifact evidence; do not claim delivery or blindly repeat a potentially mutating submission. |
+| Broad movement request versus a single demo or FAQ-only fix | Use selective scroll/hover for broad work, make the demo easy to find and observe, and preserve narrow/static requests plus touch/reduced-motion usability. |
+
+These checks assess instruction consistency and packaging. They do not establish that the original environment failures were repaired, that upstream detectors changed, or that live editor/download/motion behaviour passed.

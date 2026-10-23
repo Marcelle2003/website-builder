@@ -2,6 +2,14 @@
 
 This is the public record of approved, reusable toolkit changes. Keep raw project observations, client details, and local inbox configuration outside this repository. See [feedback recording](../skills/website-builder/references/feedback.md) and [skill review](../skills/website-builder/references/review-skill.md) for the workflow.
 
+## v0.4.2 branch — Runtime safeguards and observable verification
+
+**Problem:** Nested local runtimes can contaminate authored-component detection, and sandbox visibility can be mistaken for a stopped database. Successful extraction, editor fallback saves, dispatched downloads and technically running animations can also be overstated as verified outcomes.
+
+**Approved change:** Separate authored-component feature evidence from runtime inventory while retaining workspace build manifests and sibling components. Check host runtime visibility before restarting services. Verify extracted WordPress core and scope recovery to affected core files. Record visual editing separately from code saves, and file delivery separately from clicks. Make requested motion demos noticeable and provide their location/trigger. Retain v0.4.1's general scroll/hover direction and optional interaction transitions, adding form-step transitions explicitly. These are reusable workflow clarifications; uncertain browser/extractor causes remain unresolved. No upstream detector, runtime dependency or website implementation changes.
+
+**Verification:** All 20 offline installer tests, skill format validation, local resource links and diff checks passed on Linux. Isolated v0.4.1-to-v0.4.2 upgrades into all three supported agent destinations preserved old-version backups and fixture briefs; repeat installation was unchanged. Manual scenario review covered scoped triage, host visibility, incomplete extraction, editor/download uncertainty and motion scope. It was not an independent agent or live website test. See [validation scope](../VALIDATION.md). This is a branch update, not a tagged release.
+
 ## v0.4.1 branch — Scroll and hover movement defaults
 
 **Problem:** A broad request to add movement did not explicitly establish scroll animation and hover/focus feedback as the starting direction.
