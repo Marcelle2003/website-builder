@@ -84,6 +84,10 @@ Read [supporting skills](supporting-skills.md) for the selected WordPress, Tailw
 
 For local WordPress setup, check that the selected PHP runtime and WP-CLI can run together. Composer-based standards checks, block-development packages, browser automation, and GSAP packages belong to the project only when needed. Do not preinstall every tool mentioned by every supporting skill. Website preparation will test a real WordPress site; setup-only verification must not create one as a hidden test.
 
+## Cognito Forms connection
+
+Include the official [Cognito Forms MCP connector](cognito-forms.md#connect-the-agent) in full setup. Check the current agent’s connection and guide missing sign-in/organization authorization. This is an account connection, separate from installing supporting-skill folders; do not add an invented package to the installer manifest. Record actual readiness and continue independent setup if sign-in is pending.
+
 ## Local feedback and toolkit maintenance
 
 Feedback recording needs no additional runtime, GitHub authentication, or global agent configuration. During later website work, the AI creates project-local `SKILL_FEEDBACK.md` after its first meaningful verified observation and maintains it according to [feedback.md](feedback.md), combining duplicates and separating client preferences from reusable defects. Setup alone does not require an empty feedback log, and notes are not sent as telemetry.

@@ -8,7 +8,8 @@ If they asked for setup:
 2. Identify the current coding agent, operating system, permitted workspace, and installed tools. Explain the intended setup in plain language. Reuse suitable tools and skill installations.
 3. Obtain a complete copy of this repository in a toolkit folder, separate from any client website. Use Git if available or a repository ZIP download if it is not. Resolve the chosen branch/tag to a commit, and use files from that same revision throughout. Do not require npx to bootstrap.
 4. Follow the setup workflow, including installation of the supporting skills. Complete authorized steps yourself. When a password, interactive installer, unavailable permission, or missing tool prevents progress, explain the exact next step and resume from there when possible.
-5. Verify installation, record what was installed and anything still needed, and give a plain-language result. Do not create a new website unless the user asked for one.
+5. Include the official Cognito Forms MCP connection check via the skill’s form guidance; guide user sign-in when needed and report readiness separately from copied skill files.
+6. Verify installation, record what was installed and anything still needed, and give a plain-language result. Do not create a new website unless the user asked for one.
 
 If they asked to create a website, perform only the missing preparation and continue with `create`. If they asked to improve a website, inspect the existing project first and load only relevant guidance. Do not replace its framework or initialize a new application over it.
 

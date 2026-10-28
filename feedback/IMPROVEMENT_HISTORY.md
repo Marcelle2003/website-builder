@@ -2,6 +2,14 @@
 
 This is the public record of approved, reusable toolkit changes. Keep raw project observations, client details, and local inbox configuration outside this repository. See [feedback recording](../skills/website-builder/references/feedback.md) and [skill review](../skills/website-builder/references/review-skill.md) for the workflow.
 
+## v0.5.0 branch — Cognito forms, attribution and favicon decisions
+
+**Problem:** Website preparation needs a standard Cognito form workflow, consistent first-visit attribution and an explicit favicon decision instead of silently omitting the browser icon.
+
+**Approved change:** Add official Cognito Forms MCP connection guidance to full setup and form creation. Ship reusable head/footer JavaScript preserving the supplied twelve-field mapping, first-touch storage key, defaults and 90-day expiry, with blocked-storage fallback, bounded embed readiness checks, per-form targeting and no identifier logging. Require tracking fields to be hidden except when both name parts are exactly ADMIN, using Cognito conditional logic. Include the scripts in new website preparation, and prompt for a favicon with an explicit skip option and native WordPress verification. Route these requirements through creation, relevant improvements, project templates and the brief. Account sign-in and live-form verification remain separate from installing files.
+
+**Verification:** All 20 Python installer tests, 16 Node tracking tests, skill format, resource-link and diff checks passed locally on Linux. Isolated upgrades from v0.4.2 into Codex, Claude and Cursor destinations copied the new assets and references, preserved backups and fixture briefs, and left repeats unchanged. Manual workflow review covered connection unavailable, existing provider preservation, ADMIN/ADMIN field rules, and favicon supply/skip/pending states. Script tests use an SDK stub; no live Cognito OAuth, form mutation, real submission or browser-tab icon was tested. CI now includes the tracking tests. See [validation scope](../VALIDATION.md). This is a WordPress branch update, not a tagged release.
+
 ## v0.4.2 branch — Runtime safeguards and observable verification
 
 **Problem:** Nested local runtimes can contaminate authored-component detection, and sandbox visibility can be mistaken for a stopped database. Successful extraction, editor fallback saves, dispatched downloads and technically running animations can also be overstated as verified outcomes.

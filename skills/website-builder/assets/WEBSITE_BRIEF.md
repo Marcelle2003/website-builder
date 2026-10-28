@@ -18,6 +18,10 @@ Brand name, tone, references, colour roles, typography, image treatment, and dec
 
 Supplied versus demonstration content, imagery sources/credits, WordPress-editable pages/blocks/fields, and publishing/cache behaviour. State what editors can change and which layout or animation changes are made through the AI. Preserve the actual editing model when adopting an existing site.
 
+## Forms, attribution and favicon
+
+Cognito organization/form references and connection status (no credentials), actual field mappings and ADMIN/ADMIN visibility rule, script locations, first-touch/90-day attribution, existing consent integration if present, and real prefill/submission checks. Record an explicit alternative provider or unsupported embed constraints. Favicon: approved asset and verification, pending choice/asset, or explicit owner skip.
+
 ## Project and preview
 
 Stack and selected versions, local WordPress environment and hosting target, where run instructions live, local preview/admin URLs, and relevant configuration names without secret values. Record an existing non-WordPress stack accurately; this brief does not authorize migration.

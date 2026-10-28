@@ -15,6 +15,7 @@
 - Environment: {{actual local WordPress environment, site path, runtime/version sources, and hosting target; describe the actual stack for an existing non-WordPress site}}.
 - Theme: {{actual theme path, parent theme if any, PHP/block editing model, Tailwind/assets build, and version sources}}.
 - Content/functionality: {{editor responsibilities, custom plugin paths, content types/fields, and retained plugins or builders; omit absent components}}.
+- Forms/site identity: {{actual Cognito integration and script locations, tracking/visibility constraints, connection and verification status, and favicon decision; refer to the brief rather than assuming these are complete}}.
 - Publishing: {{actual WordPress publish/cache behaviour and compiled-theme asset delivery path}}.
 
 ## Commands

@@ -57,6 +57,10 @@ Block themes can be equally expressive and remain an option when the team wants 
 
 CSS handles simple movement. GSAP is optional for coordinated animation and scroll choreography, with mobile and reduced-motion alternatives. The agent inspects reference interactions in a browser where available, rather than treating a screenshot as evidence of animation. Setup and reusable components save time; distinctive design still benefits from iteration with you.
 
+## Forms, attribution and favicon
+
+Website Builder includes [Cognito Forms MCP setup and form-building guidance](skills/website-builder/references/cognito-forms.md). Connecting it requires the owner’s Cognito sign-in and organization access; copying skill files does not authenticate it. New website preparation includes reusable tracking scripts with first-visit attribution, 90-day storage and the standard hidden form fields, visible only when both names are ADMIN. The agent also [asks for a favicon](skills/website-builder/references/site-icon.md), allows an explicit skip, and verifies the configured icon. Existing websites adopt these changes only within requested project work.
+
 ## Installation details for agents
 
 Read [START_HERE.md](START_HERE.md), then the [setup workflow](skills/website-builder/references/setup.md). The included Python installer needs Python 3.10 or newer, uses the standard library, and does not require npx. It installs complete skill folders for the selected agent. Supporting skills are fetched at the reviewed commits in [the manifest](skills/website-builder/supporting-skills.json).
@@ -75,7 +79,7 @@ Setup does not publish a website or create paid hosting accounts. Deployment can
 
 ## Versions and maintenance
 
-This branch targets **v0.4.2** and is not a published release. Use the branch URL above for the WordPress workflow, or an exact commit URL for a fixed revision. To update, ask your agent to inspect the chosen revision and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
+This branch targets **v0.5.0** and is not a published release. Use the branch URL above for the WordPress workflow, or an exact commit URL for a fixed revision. To update, ask your agent to inspect the chosen revision and update the installed toolkit. Supporting skills are not silently advanced to their latest upstream versions.
 
 The installed skill is a working copy for your agent, separate from the toolkit's source repository. Reviewing or publishing a toolkit improvement requires the intended source checkout; editing an installed copy does not update GitHub.
 
@@ -85,12 +89,13 @@ Updating the skill does not automatically edit existing website projects. Ask th
 
 ## Validation
 
-Run the installer tests with Python's built-in test runner:
+Run the installer tests with Python 3.10+ and the tracking-script tests with Node 22+:
 
 ```sh
 python3 -m unittest discover -s tests -v
+node --test tests/tracking.test.cjs
 ```
 
-GitHub Actions runs the installer tests on Linux, macOS, and Windows. These checks exercise installation behaviour; they do not certify every coding-agent version or a full first-time Mac setup. See [validation scope](VALIDATION.md).
+GitHub Actions runs the installer and tracking-script tests on Linux, macOS, and Windows. These checks exercise installation behaviour and isolated script logic; they do not certify every coding-agent version or a full first-time Mac setup. See [validation scope](VALIDATION.md).
 
 Original toolkit content is [MIT licensed](LICENSE). Downloaded supporting skills retain their own licences and attribution.

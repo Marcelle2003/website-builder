@@ -28,6 +28,12 @@ For a palette change, inspect computed styles and interactive states as well as 
 
 For new or materially changed project instructions, follow [fresh-chat verification](project-instructions.md#verify-a-fresh-chat). Check instruction loading independently from installation and build results. Keep the AI-maintained brief current with confirmed decisions and actual implementation status before handing work back.
 
+## Forms and favicon
+
+For form/tracking work, run the [Cognito verification scenarios](cognito-forms.md#verification): first-touch persistence, expiry, blocked storage, delayed/multiple embeds, real field values, and both-name ADMIN visibility. Separate script tests, SDK dispatch, rendered fields and saved entry evidence.
+
+Before a new-site or branding handoff, check the [favicon decision and evidence](site-icon.md). A skipped icon needs an explicit owner choice; an unanswered prompt stays pending. Verify configured markup and image URLs, then browser-tab appearance where available.
+
 ## Scope and truthful reporting
 
 Check that the diff matches the request and unrelated user work remains intact. Run checks once successfully, expanding or repeating them when a subsequent change or unresolved issue warrants it. If a prerequisite is missing, perform useful remaining checks and record the specific blocked verification.

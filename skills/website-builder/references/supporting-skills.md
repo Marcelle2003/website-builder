@@ -81,6 +81,10 @@ The official collection also contains errors; the scoped source review found the
 - Scoped cleanup should revert a component's own timelines, triggers, and listeners. Do not copy global `ScrollTrigger.getAll().forEach(...kill)` cleanup into an isolated component and break other sections. Reduced-motion layouts must show all essential content, not just set a duration to zero while leaving long pinned scenes.
 - Treat performance advice as hypotheses to measure. `scrub` smoothing, pinning, and `will-change` do not guarantee compositor promotion or better frame rates. Avoid permanent layer hints on every animated element.
 
+## Forms: Cognito Forms MCP
+
+Cognito Forms is a standard setup integration, supplied through its official remote MCP connector rather than the pinned filesystem skill manifest. Follow [connection, form-building and prefill guidance](cognito-forms.md). Confirm tools and organization access in the selected agent; file installation alone does not connect it. The reusable head/footer assets ship inside Website Builder, with no additional JavaScript package required.
+
 ## Browser, accessibility, and quality checks
 
 Use the current agent's available browser tooling and project test tools. A portable skill cannot supply a browser connection merely by mentioning Playwright. Follow [verification](verification.md) for keyboard, mobile, reduced motion, editing, security-sensitive flows, and browser performance checks. Add a host-specific testing skill/tool only when it is available, useful, and within setup scope; do not install several overlapping browser stacks by default.

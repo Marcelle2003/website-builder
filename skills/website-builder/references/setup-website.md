@@ -31,6 +31,12 @@ For an incomplete extraction, inspect the failure before retrying. Obtain the sa
 
 Relevant sources: [WordPress installation](https://developer.wordpress.org/advanced-administration/before-install/howto-install/), [classic theme basics](https://developer.wordpress.org/themes/classic-themes/basics/), [including assets](https://developer.wordpress.org/themes/core-concepts/including-assets/), [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli), and [source detection](https://tailwindcss.com/docs/detecting-classes-in-source-files).
 
+## Forms, attribution and site identity
+
+Include the [Cognito tracking head/footer assets](cognito-forms.md) on every public page, with explicit targets where forms are embedded. Capture first-visit attribution even when the landing page has no form. Use the companion plugin for durable integration and the site’s normal consent/CSP lifecycle. Prepare Cognito form creation through its MCP connection when forms are in scope; do not create a throwaway remote form for setup-only verification.
+
+Ask the owner for the [favicon choice](site-icon.md), including an explicit skip option. Record the choice or pending answer and configure/verify an approved asset before reporting the favicon ready.
+
 ## Make it usable by its owner
 
 - Supply short, OS-appropriate start/stop instructions and the working website and `/wp-admin/` URLs. Explain any local application's role. Use actual commands and working directories; do not make a Mac-only shell script the sole run path.

@@ -1,0 +1,11 @@
+# Favicon decision and verification
+
+During website preparation or brand setup, explicitly ask the owner about the favicon (the small browser-tab icon). Offer: supply/select an icon, use a suitable existing brand mark, or skip for now. A good prompt is: “What should we use for the browser-tab icon: an icon you supply, your existing brand mark, or skip for now?” Ask once and preserve a recorded decision; do not silently treat no answer as a skip. Continue independent work while awaiting the asset/choice. An intentional skip is allowed and should remain visible in the brief, without blocking the rest of the website.
+
+For an existing site, inspect the configured icon first and preserve it. If adopting a site without an icon or a recorded decision, ask at the next setup/branding checkpoint; do not expand a narrow content fix into unsolicited branding work. A logo displayed in the header is not proof that a favicon is configured.
+
+For WordPress, use the native **Site Icon** setting and a Media Library attachment so the owner can maintain it. Prefer a simple square PNG at least 512 × 512 pixels. Select an approved existing asset or request one; do not silently invent a logo or distort a wide wordmark. Follow the installed WordPress version's controls (Settings → General in WordPress 6.5+), or use verified WP-CLI/media operations targeting the correct site. Preserve `wp_head()` so WordPress emits its icon links. Avoid competing hardcoded favicon tags. See [official favicon instructions](https://wordpress.org/documentation/article/create-a-favicon/).
+
+Verify the saved Site Icon attachment, rendered `rel="icon"` links and their actual image responses on the homepage and an inner page. Inspect the browser tab where tools expose it; account for favicon caching by trying a fresh tab/session before replacing a correct asset. A successful build or an uploaded image alone is not a favicon pass. If the browser chrome is inaccessible, report the markup/asset checks separately from the unverified tab appearance.
+
+Record one of: configured and verified (with evidence), configured with verification pending, awaiting owner asset/choice, or explicitly skipped by owner. Keep that status in WEBSITE_BRIEF.md; do not require the owner to maintain it manually.

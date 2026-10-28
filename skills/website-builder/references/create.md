@@ -26,6 +26,12 @@ Use WordPress APIs for content, media, menus, asset loading, and template hooks.
 
 Implement simple transitions in CSS; add a coordinated animation library only for sequences that justify it. Read [design and motion guidance](design-and-motion.md) for reference inspection, choreography, and accessible fallbacks. Do not add a frontend framework, headless API, or client-side router merely to make the stack look sophisticated.
 
+## Forms and browser identity
+
+Use [Cognito Forms](cognito-forms.md) for new forms: check MCP access, preserve the twelve tracking fields and ADMIN/ADMIN visibility rule, and integrate the supplied head/footer scripts. Verify actual prefilling independently from SDK dispatch. Follow a project’s explicit provider choice and preserve established business workflows.
+
+Resolve the [favicon decision](site-icon.md) from the brief or ask the owner; configure and verify the approved asset, or record their explicit skip.
+
 ## Refine with the user
 
 Open the working preview and describe two or three concrete design decisions they can evaluate. Incorporate requested changes consistently across representative page types and states. Maintain the brief with accepted direction and deferred work; keep suggestions separate from decisions. Update project instructions if architecture or commands changed.
