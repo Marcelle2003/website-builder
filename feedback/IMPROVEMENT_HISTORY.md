@@ -2,6 +2,14 @@
 
 This is the public record of approved, reusable toolkit changes. Keep raw project observations, client details, and local inbox configuration outside this repository. See [feedback recording](../skills/website-builder/references/feedback.md) and [skill review](../skills/website-builder/references/review-skill.md) for the workflow.
 
+## v0.5.1 working tree — Keyword research corrections and SEO review
+
+**Problem:** Keyword research could choose an ambiguous city over a region, reuse another account's cached bids, silently drop additional URL seeds, and be invoked from the wrong folder. Page-planning guidance made reported demand a requirement for a service page.
+
+**Approved change:** Require explicit ambiguous-location selection; isolate caches by customer, API and location choice; reject multiple URL seeds; resolve the installed helper path; and let business needs justify pages independently of search volume. Support accented place names and recover from malformed cache JSON. Clarify bid estimates, metadata ownership, stable URLs, environment-aware indexing, sitemap/structured-data checks and AI-search limits.
+
+**Verification:** 29 offline Python tests passed, including nine keyword-helper regression tests; the existing Node tracking test command, skill validation, resource-link and diff checks passed. Official Google/WordPress documentation informed the instruction review. No live Ads account, WordPress deployment or actual indexing/citation outcome was tested. Local changes only; this entry does not claim a published release or installed update.
+
 ## v0.5.0 branch — Cognito forms, attribution and favicon decisions
 
 **Problem:** Website preparation needs a standard Cognito form workflow, consistent first-visit attribution and an explicit favicon decision instead of silently omitting the browser icon.

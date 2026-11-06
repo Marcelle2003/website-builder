@@ -10,3 +10,10 @@ __pycache__/
 SKILL_FEEDBACK.md
 .website-builder-local.json
 .website-builder-private/
+
+# Local Google Ads credentials and private keys
+google-ads.json
+service-account*.json
+credentials.json
+*.pem
+*.key

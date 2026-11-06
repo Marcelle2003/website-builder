@@ -6,11 +6,17 @@ Read the current brief and supplied material. Establish the purpose, intended vi
 
 Explain what the site does on the homepage. An About page can develop the story; it cannot repair an unclear first impression. Use honest draft copy and explicitly labelled demonstration content. Do not invent client testimonials, credentials, partner logos, or business capabilities.
 
-If the user is still exploring direction, describe one recommended direction and a small number of meaningful alternatives. For an implementation request with enough context, proceed to a reviewable first version using stated assumptions. Do not force a separate approval for every component.
+If the user is still exploring direction, describe one recommended direction and a small number of meaningful alternatives. For an implementation request with enough context, proceed to a reviewable first version using stated assumptions. The offer and the search location are not assumptions. Do not force a separate approval for every component.
+
+## Choose pages from search demand
+
+Keyword Planner waits until the conversation or the supplied material establishes what the business does, which services it actually offers, who the site is for, and where those people search. Ask for the missing pieces in one short batch. Do not invent a trade, and do not guess a country, city, or region from the Ads account, this skill, or the machine running the call.
+
+Then follow [search-led page building](seo-and-ai-search.md) before the page list is settled. Query that named market, and use demand alongside business goals, visitor needs, and the owner’s requested pages. Low or unavailable volume does not veto a useful page. Group searches by intent and use the chosen topic naturally in the slug, title, H1, description, and introduction. Record the place the owner named, the date of the result, and the figures in the brief. If the API cannot be called, continue from the brief and say that search volumes were unavailable.
 
 ## Develop a coherent first version
 
-Prepare missing infrastructure via [project setup](setup-website.md), including the [persistent project instructions](project-instructions.md). Create the brief yourself from the conversation using the [template](../assets/WEBSITE_BRIEF.md); do not ask the owner to complete it as a form. Load the relevant specialist skills and [design and motion guidance](design-and-motion.md).
+Prepare missing infrastructure via [project setup](setup-website.md), including the [persistent project instructions](project-instructions.md). Create the brief yourself from the conversation using the [template](../assets/WEBSITE_BRIEF.md); do not ask the owner to complete it as a form. Load the relevant specialist skills, [search-led page building](seo-and-ai-search.md), and [design and motion guidance](design-and-motion.md).
 
 Inspect supplied reference websites in a browser when available, including scrolling, opening and closing menus, and transitions between pages. Separate observed behaviour from ideas inferred from a screenshot. Translate the references into a direction suited to this business, including where movement adds character or explains relationships.
 

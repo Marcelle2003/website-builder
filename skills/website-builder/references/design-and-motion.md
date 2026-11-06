@@ -16,6 +16,10 @@ For internet images, find subject-relevant sources with clear usage terms. Recor
 
 Preserve actual uploads and CMS-selected images. Provide source/credit UI when required. Use meaningful alt text for informative images and empty alt text for decoration. Set dimensions, choose contain versus crop deliberately, generate responsive sizes, and lazy-load below-the-fold media. Do not hide a whole product merely to make thumbnails uniform.
 
+In WordPress, render content images with `wp_get_attachment_image()` and registered sizes so the browser receives a `srcset` and explicit width and height. Give the first hero image high priority and skip lazy-loading for it. Lazy-load images below the fold. Give videos a poster and dimensions.
+
+When the server can encode WebP, generate JPEG and PNG sub-sizes as WebP through the `image_editor_output_format` filter, mapping `image/jpeg` and `image/png` to `image/webp`. WordPress keeps the uploaded original and leaves the format unchanged when WebP is unavailable. Do not convert SVG, video, or animated GIF. Do not walk the existing library and replace files unless the owner asks. A PageSpeed target is not a reason to recompress the library or to install a performance plugin for this.
+
 ## Design movement alongside the layout
 
 Motion can express a site's character as well as confirm an action. When the brief includes animated references, open them in an actual browser where tools permit and exercise scrolling, menus, filters, and page navigation. Record what moved, what triggered it, how it ended, and what remained usable throughout. Distinguish observed behaviour from guesses; do not infer a library or framework from appearance. If browser inspection is unavailable, say which interactions remain unverified instead of describing imagined animation as evidence.

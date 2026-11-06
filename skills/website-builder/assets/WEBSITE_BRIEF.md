@@ -14,6 +14,10 @@ Requested pages and features, roles if applicable, existing behaviour to preserv
 
 Brand name, tone, references, colour roles, typography, image treatment, and decisions the owner likes. Record accepted motion direction, significant interactions, and mobile/reduced-motion adaptations without treating every reference effect as a requirement.
 
+## Search
+
+The country or place the owner named, the language, and the date of the Keyword Planner result. For each chosen page: primary keyword, average monthly searches, low and high top-of-page bids, and ads competition. Note when volumes were unavailable. Do not store Ads credentials, fill this in from a guessed location, or treat ads competition as organic difficulty.
+
 ## Content and editing
 
 Supplied versus demonstration content, imagery sources/credits, WordPress-editable pages/blocks/fields, and publishing/cache behaviour. State what editors can change and which layout or animation changes are made through the AI. Preserve the actual editing model when adopting an existing site.
