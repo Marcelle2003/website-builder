@@ -60,7 +60,7 @@ CSS handles simple movement. GSAP is optional for coordinated animation and scro
 
 ## Forms, attribution and favicon
 
-Website Builder includes [Cognito Forms MCP setup and form-building guidance](skills/website-builder/references/cognito-forms.md). Connecting it requires the owner’s Cognito sign-in and organization access; copying skill files does not authenticate it. New website preparation includes reusable tracking scripts. UTM values are kept for 30 days and replaced when a new tagged link is opened. Click IDs stay with the first visit for 90 days. Every new Cognito form includes those fields, hidden unless both the first and last name are exactly ADMIN. The agent also [asks for a favicon](skills/website-builder/references/site-icon.md), allows an explicit skip, and verifies the configured icon. Existing websites adopt these changes only within requested project work.
+Website Builder includes [Cognito Forms MCP setup and form-building guidance](skills/website-builder/references/cognito-forms.md). Connecting it requires the owner’s Cognito sign-in and organization access; copying skill files does not authenticate it. New website preparation includes reusable tracking scripts. The first visit, including its click IDs and UTM values, is kept for 90 days. Every new Cognito form includes those fields, hidden unless both the first and last name are exactly ADMIN. The agent also [asks for a favicon](skills/website-builder/references/site-icon.md), allows an explicit skip, and verifies the configured icon. Existing websites adopt these changes only within requested project work.
 
 ## Installation details for agents
 

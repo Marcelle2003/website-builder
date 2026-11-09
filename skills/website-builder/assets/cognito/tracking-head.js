@@ -3,21 +3,15 @@
     'use strict';
     if (window.refreshCognitoTrackingPrefillPayload) return;
 
-    var clickKey = 'tracking_parameters';
-    var utmKey = 'utm_parameters';
-    var clickLifetime = 90 * 24 * 60 * 60 * 1000;
-    var utmLifetime = 30 * 24 * 60 * 60 * 1000;
-    var clickMemory = null;
-    var utmMemory = null;
-    var utmNames = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_adset', 'utm_ad', 'utm_term', 'utm_content'];
-    var clickMap = {
+    var key = 'tracking_parameters';
+    var lifetime = 90 * 24 * 60 * 60 * 1000;
+    var memory = null;
+    var fields = {
         Gclid: 'gclid', Gbraid: 'gbraid', Wbraid: 'wbraid',
-        LandingPage: 'landing_page', UserAgent: 'user_agent'
-    };
-    var utmMap = {
         LeadSource: 'utm_source', UtmMedium: 'utm_medium',
         CampaignName: 'utm_campaign', AdsetName: 'utm_adset', AdName: 'utm_ad',
-        UtmTerm: 'utm_term', UtmContent: 'utm_content'
+        UtmTerm: 'utm_term', UtmContent: 'utm_content',
+        LandingPage: 'landing_page', UserAgent: 'user_agent'
     };
 
     function valid(value) {
@@ -26,30 +20,17 @@
             value.expiryTime > Date.now();
     }
 
-    function read(storageKey) {
-        try { return JSON.parse(window.localStorage.getItem(storageKey)); } catch (error) { return null; }
-    }
-
-    function write(storageKey, value) {
-        try { window.localStorage.setItem(storageKey, JSON.stringify(value)); } catch (error) { /* Keep this page usable. */ }
-    }
-
-    function remove(storageKey) {
-        try { window.localStorage.removeItem(storageKey); } catch (error) { /* Storage may be blocked. */ }
-    }
-
     function param(name) {
         var value;
         try { value = new URL(window.location.href).searchParams.get(name); } catch (error) { return null; }
         return value && value.trim() ? value.trim() : null;
     }
 
-    function hasNewUtm() {
-        return utmNames.some(function (name) { return param(name) !== null; });
-    }
-
-    function freshUtm() {
+    function capture() {
         return {
+            gclid: param('gclid'),
+            gbraid: param('gbraid'),
+            wbraid: param('wbraid'),
             utm_source: param('utm_source') || 'Website',
             utm_medium: param('utm_medium') || 'Form',
             utm_campaign: param('utm_campaign'),
@@ -57,81 +38,38 @@
             utm_ad: param('utm_ad'),
             utm_term: param('utm_term'),
             utm_content: param('utm_content'),
-            expiryTime: Date.now() + utmLifetime
-        };
-    }
-
-    function freshClick() {
-        return {
-            gclid: param('gclid'),
-            gbraid: param('gbraid'),
-            wbraid: param('wbraid'),
             landing_page: window.location.href || null,
             user_agent: window.navigator.userAgent || null,
-            expiryTime: Date.now() + clickLifetime
+            expiryTime: Date.now() + lifetime
         };
     }
 
-    function legacyUtm(click) {
-        if (!valid(click)) return null;
-        return {
-            utm_source: click.utm_source || 'Website',
-            utm_medium: click.utm_medium || 'Form',
-            utm_campaign: click.utm_campaign || null,
-            utm_adset: click.utm_adset || null,
-            utm_ad: click.utm_ad || null,
-            utm_term: click.utm_term || null,
-            utm_content: click.utm_content || null,
-            expiryTime: click.expiryTime
-        };
+    function read() {
+        try { return JSON.parse(window.localStorage.getItem(key)); } catch (error) { return null; }
     }
 
-    function loadUtm() {
-        var present = false;
-        var stored = null;
-        try {
-            present = window.localStorage.getItem(utmKey) !== null;
-            stored = read(utmKey);
-        } catch (error) {
-            present = false;
-            stored = null;
-        }
-        if (present && !valid(stored)) {
-            remove(utmKey);
-            stored = null;
-        } else if (!present) {
-            stored = legacyUtm(read(clickKey));
-        }
-        if (!valid(stored) && valid(utmMemory)) stored = utmMemory;
-        if (valid(stored) && !hasNewUtm()) return stored;
-        return freshUtm();
-    }
-
-    function loadClick() {
-        var stored = read(clickKey);
-        if (!valid(stored)) {
-            remove(clickKey);
-            stored = valid(clickMemory) ? clickMemory : freshClick();
-        }
-        return stored;
-    }
-
-    function text(value) {
-        return typeof value === 'string' && value.trim() ? value.trim() : null;
+    function payloadFrom(token) {
+        var payload = {};
+        Object.keys(fields).forEach(function (field) {
+            var value = token[fields[field]];
+            payload[field] = typeof value === 'string' && value.trim() ? value.trim() : null;
+        });
+        payload.LeadSource = payload.LeadSource || 'Website';
+        payload.UtmMedium = payload.UtmMedium || 'Form';
+        return payload;
     }
 
     window.refreshCognitoTrackingPrefillPayload = function () {
-        var utm = loadUtm();
-        var click = loadClick();
-        utmMemory = utm;
-        clickMemory = click;
-        write(utmKey, utm);
-        write(clickKey, click);
-        var payload = {};
-        Object.keys(utmMap).forEach(function (field) { payload[field] = text(utm[utmMap[field]]); });
-        Object.keys(clickMap).forEach(function (field) { payload[field] = text(click[clickMap[field]]); });
-        payload.LeadSource = payload.LeadSource || 'Website';
-        payload.UtmMedium = payload.UtmMedium || 'Form';
+        var token = read();
+        if (!valid(token)) {
+            try { window.localStorage.removeItem(key); } catch (error) { /* Storage may be blocked. */ }
+            token = valid(memory) ? memory : capture();
+            memory = token;
+            try { window.localStorage.setItem(key, JSON.stringify(token)); } catch (error) { /* Keep this page usable. */ }
+        } else {
+            memory = token;
+        }
+        var payload = payloadFrom(token);
         window.__cognitoTrackingPrefill = payload;
         return payload;
     };

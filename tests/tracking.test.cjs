@@ -7,8 +7,7 @@ const vm = require('node:vm');
 const assets = path.join(__dirname, '../skills/website-builder/assets/cognito');
 const head = fs.readFileSync(path.join(assets, 'tracking-head.js'), 'utf8');
 const footer = fs.readFileSync(path.join(assets, 'tracking-footer.js'), 'utf8');
-const clickLifetime = 90 * 24 * 60 * 60 * 1000;
-const utmLifetime = 30 * 24 * 60 * 60 * 1000;
+const lifetime = 90 * 24 * 60 * 60 * 1000;
 const plain = value => JSON.parse(JSON.stringify(value));
 function page(options = {}) {
     let now = options.now || 1800000000000;
@@ -37,7 +36,7 @@ function page(options = {}) {
     };
 }
 
-test('maps all twelve fields, decodes query values and stores UTM values for 30 days', () => {
+test('maps all twelve fields, decodes query values and stores exactly 90 days', () => {
     const p = page({url:'https://example.test/?gclid=g&gbraid=b&wbraid=w&utm_source=Search&utm_medium=CPC&utm_campaign=Camp+One&utm_adset=set&utm_ad=ad&utm_term=a%26b&utm_content=hero'});
     p.head();
     assert.deepEqual(plain(p.window.__cognitoTrackingPrefill), {
@@ -45,27 +44,18 @@ test('maps all twelve fields, decodes query values and stores UTM values for 30 
         AdsetName:'set',AdName:'ad',UtmTerm:'a&b',UtmContent:'hero',
         LandingPage:p.window.location.href,UserAgent:'test-browser'
     });
-    assert.equal(JSON.parse(p.storage.get('utm_parameters')).expiryTime,1800000000000+utmLifetime);
-    assert.equal(JSON.parse(p.storage.get('tracking_parameters')).expiryTime,1800000000000+clickLifetime);
+    assert.equal(JSON.parse(p.storage.get('tracking_parameters')).expiryTime,1800000000000+lifetime);
+    assert.equal(p.storage.has('utm_parameters'), false);
 });
 
-test('a visit without UTM values keeps the stored set and its original expiry', () => {
-    const first=page({url:'https://example.test/?utm_source=Search&utm_campaign=Camp'});first.head();
-    const stored=first.storage.get('utm_parameters');
-    const next=page({storage:first.storage,now:1800000001000,url:'https://example.test/contact'});next.head();
-    assert.equal(next.window.__cognitoTrackingPrefill.LeadSource,'Search');
-    assert.equal(next.window.__cognitoTrackingPrefill.CampaignName,'Camp');
-    assert.equal(next.storage.get('utm_parameters'),stored);
-});
-
-test('a newly tagged URL replaces UTM values without replacing the first click', () => {
-    const first=page();first.head();
+test('direct first touch uses defaults and survives later campaigns without extending expiry', () => {
+    const first=page();first.head();const token=first.storage.get('tracking_parameters');
     const next=page({storage:first.storage,now:1800000001000,url:'https://example.test/contact?gclid=later&utm_source=later'});next.head();
-    assert.equal(next.window.__cognitoTrackingPrefill.LeadSource,'later');
+    assert.equal(next.window.__cognitoTrackingPrefill.LeadSource,'Website');
     assert.equal(next.window.__cognitoTrackingPrefill.UtmMedium,'Form');
     assert.equal(next.window.__cognitoTrackingPrefill.Gclid,null);
     assert.equal(next.window.__cognitoTrackingPrefill.LandingPage,'https://example.test/');
-    assert.equal(JSON.parse(next.storage.get('utm_parameters')).expiryTime,1800000001000+utmLifetime);
+    assert.equal(next.storage.get('tracking_parameters'),token);
 });
 
 test('whitespace-only UTM values are ignored', () => {
@@ -74,13 +64,13 @@ test('whitespace-only UTM values are ignored', () => {
     assert.equal(p.window.__cognitoTrackingPrefill.CampaignName,null);
 });
 
-test('UTM storage refreshes at 30 days and click IDs refresh at 90 days', () => {
+test('expired attribution refreshes at the exact boundary and returns the new record', () => {
     const p=page({url:'https://example.test/?gclid=old&utm_source=old'});p.head();
-    p.advance(utmLifetime);p.window.location.href='https://example.test/new?gclid=new&utm_source=new';
-    assert.equal(p.window.refreshCognitoTrackingPrefillPayload().LeadSource,'new');
-    assert.equal(p.window.__cognitoTrackingPrefill.Gclid,'old');
-    p.advance(clickLifetime-utmLifetime);p.window.location.href='https://example.test/later?gclid=newer';
-    assert.equal(p.window.refreshCognitoTrackingPrefillPayload().Gclid,'newer');
+    p.advance(lifetime);p.window.location.href='https://example.test/new?gclid=new&utm_source=new';
+    const refreshed=p.window.refreshCognitoTrackingPrefillPayload();
+    assert.equal(refreshed.Gclid,'new');
+    assert.equal(refreshed.LeadSource,'new');
+    assert.equal(JSON.parse(p.storage.get('tracking_parameters')).expiryTime,1800000000000+lifetime+lifetime);
 });
 
 test('invalid JSON, nonobjects and missing/invalid expiry are replaced', () => {
@@ -92,7 +82,7 @@ test('invalid JSON, nonobjects and missing/invalid expiry are replaced', () => {
 });
 
 test('existing supplied-script tokens remain compatible and values are not treated as code', () => {
-    const raw={gclid:'<script>alert(1)</script>',utm_source:'original',expiryTime:1800000000000+clickLifetime,landing_page:'https://example.test/first'};
+    const raw={gclid:'<script>alert(1)</script>',utm_source:'original',expiryTime:1800000000000+lifetime,landing_page:'https://example.test/first'};
     const p=page({storage:new Map([['tracking_parameters',JSON.stringify(raw)]])});p.head();
     assert.equal(p.window.__cognitoTrackingPrefill.Gclid,raw.gclid);
     assert.equal(p.window.__cognitoTrackingPrefill.LeadSource,'original');
