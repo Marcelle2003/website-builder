@@ -14,15 +14,16 @@ You do not need to install Node, npx, Python, or Git before asking. The agent ch
 
 If the agent cannot read the URL, select the **wordpress-theme-builder** branch, use GitHub's **Code → Download ZIP**, extract the folder, open it in your coding agent, and ask it to read `START_HERE.md`.
 
-## Four website modes and a review mode
+## Five website modes and a review mode
 
 - **Setup:** “Set up Website Builder on this computer.” Installs the skill, its supporting framework skills, and the necessary development tools.
 - **Setup website:** “Prepare a new website called Willow Studio.” Prepares local WordPress, a custom theme, Tailwind styling, and the project's editing model.
 - **Create:** “Create a warm, playful website for my ceramics studio. Here are my photos and some references I like.” Develops the content, design, pages, and interactions with you.
 - **Improve:** “The mobile menu opens abruptly. Make it smooth, and keep the existing design.” Inspects and improves the relevant parts of your site.
+- **SEO:** “Update this site’s pages so they can be found. Keep the design.” Checks and updates titles, headings, descriptions, image alt text, and indexing without a visual redesign.
 - **Review skill:** “Review the Website Builder feedback from these projects.” Uses the local notes you designate to propose improvements to the toolkit. It proposes changes by default; it applies and publishes them when you authorize that work.
 
-These are five modes of one skill, not five automatically registered slash commands. Ordinary language works. See [agent-specific installation and invocation](skills/website-builder/references/compatibility.md).
+These are six modes of one skill, not six automatically registered slash commands. Ordinary language works. See [agent-specific installation and invocation](skills/website-builder/references/compatibility.md).
 
 Each website belongs in its **own project folder**, separate from this toolkit.
 
@@ -59,7 +60,7 @@ CSS handles simple movement. GSAP is optional for coordinated animation and scro
 
 ## Forms, attribution and favicon
 
-Website Builder includes [Cognito Forms MCP setup and form-building guidance](skills/website-builder/references/cognito-forms.md). Connecting it requires the owner’s Cognito sign-in and organization access; copying skill files does not authenticate it. New website preparation includes reusable tracking scripts with first-visit attribution, 90-day storage and the standard hidden form fields, visible only when both names are ADMIN. The agent also [asks for a favicon](skills/website-builder/references/site-icon.md), allows an explicit skip, and verifies the configured icon. Existing websites adopt these changes only within requested project work.
+Website Builder includes [Cognito Forms MCP setup and form-building guidance](skills/website-builder/references/cognito-forms.md). Connecting it requires the owner’s Cognito sign-in and organization access; copying skill files does not authenticate it. New website preparation includes reusable tracking scripts. UTM values are kept for 30 days and replaced when a new tagged link is opened. Click IDs stay with the first visit for 90 days. Every new Cognito form includes those fields, hidden unless both the first and last name are exactly ADMIN. The agent also [asks for a favicon](skills/website-builder/references/site-icon.md), allows an explicit skip, and verifies the configured icon. Existing websites adopt these changes only within requested project work.
 
 ## Installation details for agents
 

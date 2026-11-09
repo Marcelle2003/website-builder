@@ -1,6 +1,6 @@
 # Build pages from search demand
 
-Use this while creating a site, and when an improvement adds a page or changes what the business offers. Query Google Ads Keyword Planner before that page list is settled, then build the WordPress pages from the result. When an improvement only edits an existing public page, keep its heading outline, document title, meta description, and alt text current without a new keyword query. A closing check confirms the affected pages still match the chosen keywords. This is research for the site being built. It does not add a keyword tool to the theme, and it does not promise rankings.
+Use this while creating a site, during an [SEO-only pass](seo.md), and when an improvement adds a page or changes what the business offers. Query Google Ads Keyword Planner before that page list is settled, then build the WordPress pages from the result. When the work only edits an existing public page, keep its heading outline, document title, meta description, and alt text current without a new keyword query. A closing check confirms the affected pages still match the chosen keywords. This is research for the site being built. It does not add a keyword tool to the theme, and it does not promise rankings.
 
 ## Know the business first
 

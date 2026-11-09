@@ -11,7 +11,7 @@ If they asked for setup:
 5. Include the official Cognito Forms MCP connection check via the skill’s form guidance; guide user sign-in when needed and report readiness separately from copied skill files.
 6. Verify installation, record what was installed and anything still needed, and give a plain-language result. Do not create a new website unless the user asked for one.
 
-If they asked to create a website, perform only the missing preparation and continue with `create`. If they asked to improve a website, inspect the existing project first and load only relevant guidance. Do not replace its framework or initialize a new application over it.
+If they asked to create a website, perform only the missing preparation and continue with `create`. If they asked to improve a website, inspect the existing project first and load only relevant guidance. If they asked only for search, metadata, headings, or indexing, inspect the existing project and follow `seo`. Do not replace its framework or initialize a new application over it.
 
 New projects default to conventional WordPress with a custom hybrid PHP theme and Tailwind CSS, targeting LAMP-compatible hosting. Use WordPress for editable content, the block editor where useful, and code components for distinctive layouts. Place durable business functionality in a companion plugin. Respect an explicit block-theme choice or existing architecture. Use CSS for simple motion and optional animation skills when coordinated sequences justify them; do not add Astro or a headless layer by default.
 
@@ -19,6 +19,6 @@ During website work, follow [feedback recording](skills/website-builder/referenc
 
 If they asked to review the toolkit, follow [review-skill](skills/website-builder/references/review-skill.md) using only the designated projects or inbox. Default to a proposal. Existing authorization such as “apply and publish these” covers the corresponding edits, checks, version update, commit, and push without repeated approval requests. Locate the intended toolkit source repository rather than treating an installed skill copy as its source checkout. Public changes must be reviewed, sanitized, and approved; never automatically upload raw feedback notes.
 
-The toolkit is a **portable skill**, not a standalone application. Its four website modes are `setup`, `setup-website`, `create`, and `improve`; `review-skill` is the fifth, for toolkit maintenance. Understand those names from ordinary conversation; they do not register five separate slash commands. Updating an installed skill does not edit existing website projects.
+The toolkit is a **portable skill**, not a standalone application. Its five website modes are `setup`, `setup-website`, `create`, `improve`, and `seo`; `review-skill` is the sixth, for toolkit maintenance. Understand those names from ordinary conversation; they do not register six separate slash commands. Updating an installed skill does not edit existing website projects.
 
 If you cannot access local files or execute commands, say so clearly and guide the user to open this repository in a local coding agent. Do not claim installation from reading these instructions alone.

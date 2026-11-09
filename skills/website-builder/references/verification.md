@@ -30,7 +30,7 @@ For new or materially changed project instructions, follow [fresh-chat verificat
 
 ## Forms and favicon
 
-For form/tracking work, run the [Cognito verification scenarios](cognito-forms.md#verification): first-touch persistence, expiry, blocked storage, delayed/multiple embeds, real field values, and both-name ADMIN visibility. Separate script tests, SDK dispatch, rendered fields and saved entry evidence.
+For form/tracking work, run the [Cognito verification scenarios](cognito-forms.md#verification): UTM values kept for 30 days and replaced by a newly tagged visit, first-touch click IDs, expiry, blocked storage, delayed/multiple embeds, real field values, and both-name ADMIN visibility. Separate script tests, SDK dispatch, rendered fields and saved entry evidence.
 
 Before a new-site or branding handoff, check the [favicon decision and evidence](site-icon.md). A skipped icon needs an explicit owner choice; an unanswered prompt stays pending. Verify configured markup and image URLs, then browser-tab appearance where available.
 

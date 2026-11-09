@@ -12,9 +12,9 @@ The local installer needs Python 3.10+ and installs files for the **selected** a
 
 Here `~` means the current user's home directory; on Windows this is normally under `C:/Users/<name>`. The installer resolves it through Python, so the user need not create literal `~` folders. Native Windows and WSL homes are separate. Installing for another agent later is an explicit second selection, not an automatic side effect of setup.
 
-## One skill, five modes
+## One skill, six modes
 
-`setup`, `setup-website`, `create`, and `improve` are the four website modes. `review-skill` is a fifth mode for toolkit maintenance. These choices are interpreted by Website Builder's instructions; they are not five new slash commands. Supply the choice as ordinary text with the named skill:
+`setup`, `setup-website`, `create`, `improve`, and `seo` are the five website modes. `review-skill` is a sixth mode for toolkit maintenance. These choices are interpreted by Website Builder's instructions; they are not six new slash commands. Supply the choice as ordinary text with the named skill:
 
 ```text
 Codex:       $website-builder setup
@@ -22,9 +22,9 @@ Cursor:      /website-builder setup
 Claude Code: /website-builder setup
 ```
 
-The same pattern works with the other mode names and a short request, such as `/website-builder improve the mobile navigation` or `/website-builder review-skill for these projects`. A plain-language alternative is “Use the Website Builder skill in setup-website mode for this project.” If the skill is not discovered, resolve installation first; merely mentioning its name does not make missing files available. [Skill review](review-skill.md) defaults to a proposal; an existing request to apply and publish the selected improvements authorizes that workflow without repeated approval requests.
+The same pattern works with the other mode names and a short request, such as `/website-builder improve the mobile navigation`, `/website-builder seo for this site`, or `/website-builder review-skill for these projects`. A plain-language alternative is “Use the Website Builder skill in setup-website mode for this project.” If the skill is not discovered, resolve installation first; merely mentioning its name does not make missing files available. [Skill review](review-skill.md) defaults to a proposal; an existing request to apply and publish the selected improvements authorizes that workflow without repeated approval requests.
 
-Claude Code supports `$ARGUMENTS` and positional substitution in its own skill bodies. Cursor's current skill documentation does not promise equivalent substitution. This toolkit therefore reads the user's mode and brief as conversational input rather than embedding those macros. Five separate picker entries would require separate skills or host-specific command definitions. [Claude arguments](https://code.claude.com/docs/en/skills#pass-arguments-to-skills), [Cursor invocation](https://cursor.com/docs/skills#how-skills-work)
+Claude Code supports `$ARGUMENTS` and positional substitution in its own skill bodies. Cursor's current skill documentation does not promise equivalent substitution. This toolkit therefore reads the user's mode and brief as conversational input rather than embedding those macros. Six separate picker entries would require separate skills or host-specific command definitions. [Claude arguments](https://code.claude.com/docs/en/skills#pass-arguments-to-skills), [Cursor invocation](https://cursor.com/docs/skills#how-skills-work)
 
 ## Persistent instructions for each website
 

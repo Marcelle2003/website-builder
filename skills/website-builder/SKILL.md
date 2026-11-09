@@ -1,6 +1,6 @@
 ---
 name: website-builder
-description: Creates and improves custom WordPress themes with Tailwind CSS for nontechnical users. Use for Website Builder setup, preparing or refining a WordPress website, and reviewing recorded feedback about the Website Builder workflow.
+description: Creates and improves custom WordPress themes with Tailwind CSS for nontechnical users. Use for Website Builder setup, preparing or refining a WordPress website, an SEO-only pass on an existing site, and reviewing recorded feedback about the Website Builder workflow.
 ---
 
 # Website Builder
@@ -15,9 +15,10 @@ Read only the relevant workflow, plus the shared guidance needed for the change:
 - **setup-website** — prepare WordPress and a custom theme project: [project setup](references/setup-website.md).
 - **create** — turn a brief into a website: [creation](references/create.md).
 - **improve** — inspect and refine an existing site: [improvement](references/improve.md).
+- **seo** — update how an existing site is found, without a visual redesign: [search](references/seo.md).
 - **review-skill** — review recorded Website Builder feedback and propose reusable improvements: [skill review](references/review-skill.md). Apply or publish changes only within the user's authorization.
 
-Mode names may appear in ordinary conversation. A request for discussion or a plan stays a discussion or a plan. A creation request in an empty folder includes necessary project preparation. An improvement request begins with the existing project, not scaffolding.
+Mode names may appear in ordinary conversation. A request for discussion or a plan stays a discussion or a plan. A creation request in an empty folder includes necessary project preparation. An improvement request begins with the existing project, not scaffolding. A search-only request uses `seo` and also begins with the existing site.
 
 ## Shared working approach
 
@@ -29,7 +30,7 @@ Mode names may appear in ordinary conversation. A request for discussion or a pl
 - Use [design and motion guidance](references/design-and-motion.md) to develop layout, content, imagery, and movement together. Inspect reference interactions in a real browser when available; screenshots alone do not establish how they move. Use [verification](references/verification.md) for affected flows, including WordPress editing and the rendered site.
 - Include [Cognito Forms MCP and tracking/prefill](references/cognito-forms.md) in setup and new-site form work. Install the site-wide tracking baseline during website preparation; copying the skill does not connect an account or update existing sites.
 - Ask for a [favicon decision](references/site-icon.md) during setup/branding, allow an explicit skip, and verify the configured Site Icon. Preserve recorded choices.
-- Follow [search-led page building](references/seo-and-ai-search.md) when creating a site and when an improvement adds a page, changes an offer, or edits a public page. Ask for the business and the search place when they are missing. Do not assume a location. Run `scripts/keyword_ideas.py` only when a new page or a changed offer needs figures. On the pages an improvement changes, keep the heading outline, title, meta description, and alt text. Continue from the brief when Keyword Planner cannot be called, and say that the volumes were unavailable.
+- Follow [search-led page building](references/seo-and-ai-search.md) when creating a site, when an improvement adds a page or changes an offer, and for an [SEO-only pass](references/seo.md). Ask for the business and the search place when they are missing. Do not assume a location. Run `scripts/keyword_ideas.py` only when a new page or a changed offer needs figures. On the pages in scope, keep the heading outline, title, meta description, and alt text. Continue from the brief when Keyword Planner cannot be called, and say that the volumes were unavailable.
 - Show an actual local preview when browser tools exist. Give concrete, small choices when feedback would change direction. Continue independent work while waiting; do not repeatedly ask permission for steps already authorized.
 - End with what changed, where to view it, what was checked, and any actual limitation. Distinguish implemented behaviour from a proposed feature. A build pass is not proof that a browser interaction works.
 

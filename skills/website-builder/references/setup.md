@@ -2,7 +2,7 @@
 
 Use this reference when the user wants to prepare their computer and agent for website work. Complete authorized setup where tools permit. Explain the roles simply: WordPress runs on PHP and a database; Tailwind turns theme styles into CSS; Git saves version history; skills give the agent specialist instructions. Python is only needed for this toolkit's installer helper, not for the WordPress website.
 
-Setup prepares tools and installs this toolkit. Creating a WordPress site or database, building a theme, adding demonstration content, and designing pages belong to `setup-website` or `create`. If several modes were requested together, continue to the next requested mode after setup. The four website modes are `setup`, `setup-website`, `create`, and `improve`; `review-skill` is a separate toolkit maintenance mode. They are choices within one skill, not automatically registered slash commands.
+Setup prepares tools and installs this toolkit. Creating a WordPress site or database, building a theme, adding demonstration content, and designing pages belong to `setup-website` or `create`. If several modes were requested together, continue to the next requested mode after setup. The five website modes are `setup`, `setup-website`, `create`, `improve`, and `seo`; `review-skill` is a separate toolkit maintenance mode. They are choices within one skill, not automatically registered slash commands.
 
 ## Inspect before installing
 
@@ -102,7 +102,7 @@ Verify the result rather than assuming a successful installer window finished se
 
 - Check the selected runtime executables in the environment the agent will use. Confirm Python can import `ssl`; run PHP/WP-CLI and Node/package-manager checks where selected. A local app installation can be ready before a site exists; label database/site checks as pending `setup-website` instead of claiming they passed.
 - Check installer exit status and summary. Verify the core `SKILL.md`, referenced resources, licenses/provenance, and requested supporting skill folders at the reported destination. Distinguish complete installation from a partial download or skipped conflict.
-- Confirm `website-builder` appears in the selected agent's skill picker or available-skill inventory. If discovery is stale, use its supported reload/restart path from [compatibility](compatibility.md). Invoke a harmless request such as “Use Website Builder to explain its four website modes and review-skill mode without changing files.” If the inventory cannot be inspected, state discovery as unverified.
+- Confirm `website-builder` appears in the selected agent's skill picker or available-skill inventory. If discovery is stale, use its supported reload/restart path from [compatibility](compatibility.md). Invoke a harmless request such as “Use Website Builder to explain its five website modes and review-skill mode without changing files.” If the inventory cannot be inspected, state discovery as unverified.
 
 Keep a compact checkpoint in the conversation or an existing status record: agent/scope, local WordPress environment choice, executable paths and versions, installed skills, verified checks, and the exact pending step. Do not record credentials. On resume, inspect reality and repeat only incomplete or failed steps. A failed support download need not undo a working core installation; retry the original pinned selection after resolving the cause. Do not disable TLS verification to bypass certificate errors.
 

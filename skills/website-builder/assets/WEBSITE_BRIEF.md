@@ -24,7 +24,7 @@ Supplied versus demonstration content, imagery sources/credits, WordPress-editab
 
 ## Forms, attribution and favicon
 
-Cognito organization/form references and connection status (no credentials), actual field mappings and ADMIN/ADMIN visibility rule, script locations, first-touch/90-day attribution, existing consent integration if present, and real prefill/submission checks. Record an explicit alternative provider or unsupported embed constraints. Favicon: approved asset and verification, pending choice/asset, or explicit owner skip.
+Cognito organization/form references and connection status (no credentials), actual field mappings and ADMIN/ADMIN visibility rule, script locations, 30-day UTM storage, first-touch click IDs for 90 days, existing consent integration if present, and real prefill/submission checks. Record an explicit alternative provider or unsupported embed constraints. Favicon: approved asset and verification, pending choice/asset, or explicit owner skip.
 
 ## Project and preview
 
